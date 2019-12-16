@@ -85,6 +85,7 @@ describe("/User", () => {
         });
     });
 
+
     describe("USE CASE 2) USER RIGHTS", () => {
         let agent = request.agent(app);
         var code;
@@ -135,8 +136,8 @@ describe("/User", () => {
         });
 
         it("SCHOOL ROUTE / should NOT get chart by admin (All schools chart)", async () => {
-            const res = await agent.get("/school/chart/byadmin");
-            expect(res.status).to.equal(404);
+            const res = await agent.get("/school/chart/all");
+            expect(res.status).to.equal(400);
         });
 
         it("SCHOOL ROUTE / should add a school & redirect to the table page of school", async () => {
@@ -205,6 +206,45 @@ describe("/User", () => {
         it("USER ROUTE / should NOT delete a user (admin permission)", async () => {
             const res = await agent.delete("/user/delete/" + code[0]._id);
             expect(res.status).to.equal(400);
+        });
+    });
+
+    describe("USE CASE 3) ADMIN RIGHTS", () => {
+        let agent = request.agent(app);
+        var code;
+
+        it("AUTH ROUTE / should reconnect user 1 (ADMIN) for access page ", async () => {
+            const res = await agent
+                .post("/")
+                .send(users_test[1][0]);
+
+            expect(res.status).to.equal(200);
+        });
+
+        it("SCHOOL ROUTE / should get table with all schools (by admin)", async () => {
+            const res = await agent.get("/school/byadmin");
+            expect(res.status).to.equal(200);
+        });
+
+        it("SCHOOL ROUTE / should get chart by admin (All schools chart)", async () => {
+            const res = await agent.get("/school/chart/all");
+            expect(res.status).to.equal(200);
+        });
+
+        it("USER ROUTE / should get the list of users (admin)", async () => {
+            const res = await agent.get("/user/");
+            expect(res.status).to.equal(200);
+        });
+
+        it("USER ROUTE / should delete a user (admin permission) & redirect to user table page", async () => {
+
+            code = await User.find().where(
+                "username",
+                users_test[0][1].username
+            );
+
+            const res = await agent.delete("/user/delete/" + code[0]._id);
+            expect(res.status).to.equal(302);
         });
     });
     /*

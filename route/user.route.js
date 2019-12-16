@@ -326,13 +326,13 @@ userRoutes.route("/delete/:id").delete(async function(req, res) {
         actual_user._id != "" &&
         actual_user.status == "admin"
     ) {
-        user.findByIdAndRemove({ _id: req.params.id }, function(err, user) {
+        User.findByIdAndRemove({ _id: req.params.id }, function(err, user) {
             if (err) {
                 res.status(404).json(err);
             } else {
                 if (actual_user.status == "user") {
                     res.status(200).redirect(
-                        "/actual_user/name/" + actual_user.username
+                        "/user/name/" + actual_user.username
                     );
                 } else {
                     res.status(200).redirect("/user/byadmin");
