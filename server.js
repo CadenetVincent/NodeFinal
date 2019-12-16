@@ -15,11 +15,11 @@ var port = 4444;
 mongoose.connect('mongodb://localhost:27017/ececadenetfritel');
 var db = mongoose.connection;
 
-//handle mongo error
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-  // we're connected!
-});
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb+srv://User:User@cluster0-k3dxs.gcp.mongodb.net/ececadenetfritel", { useNewUrlParser: true }).then(
+  () => {console.log('Database is connected') },
+  err => { console.log('Can not connect to the database'+ err)}
+);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

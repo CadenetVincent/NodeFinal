@@ -12,34 +12,20 @@ describe("/User", () => {
     });
 
     describe("USE CASE 1) register & connect user", () => {
+
         it("AUTH ROUTE / should add user 1 inscription", async () => {
             const res = await request(app)
                 .post("/")
                 .send(users_test[2][0]);
 
             expect(res.status).to.equal(200);
-        });
-
-        it("AUTH ROUTE / should add user 2 inscription", async () => {
-            const res = await request(app)
-                .post("/")
-                .send(users_test[2][1]);
-
-            expect(res.status).to.equal(200);
-        });
-
-        it("AUTH ROUTE / should add user 3 inscription", async () => {
-            const res = await request(app)
-                .post("/")
-                .send(users_test[2][2]);
-
-            expect(res.status).to.equal(200);
+            
         });
 
         it("AUTH ROUTE / should NOT add an existing user inscription", async () => {
             const res = await request(app)
                 .post("/")
-                .send(users_test[2][2]);
+                .send(users_test[2][0]);
 
             expect(res.status).to.equal(400);
         });
@@ -60,22 +46,6 @@ describe("/User", () => {
             expect(res.status).to.equal(200);
         });
 
-        it("AUTH ROUTE / should * connect user 2 (User) *", async () => {
-            const res = await request(app)
-                .post("/")
-                .send(users_test[1][1]);
-
-            expect(res.status).to.equal(200);
-        });
-
-        it("AUTH ROUTE / should * connect user 3 (User) *", async () => {
-            const res = await request(app)
-                .post("/")
-                .send(users_test[1][2]);
-
-            expect(res.status).to.equal(200);
-        });
-
         it("AUTH ROUTE / should NOT * connect user error (Not Found) *", async () => {
             const res = await request(app)
                 .post("/")
@@ -90,12 +60,12 @@ describe("/User", () => {
         let agent = request.agent(app);
         var code;
 
-        it("AUTH ROUTE / should reconnect user 3 (User) for access page ", async () => {
+        it("AUTH ROUTE / should connect user 3 (User) for access page ", async () => {
             const res = await agent
                 .post("/", async function(req, res) {
-                    req.session.user = new User(users_test[0][2]);
+                    req.session.user = new User(users_test[2][2]);
                 })
-                .send(users_test[1][2]);
+                .send(users_test[2][2]);
 
             expect(res.status).to.equal(200);
         });
@@ -213,7 +183,7 @@ describe("/User", () => {
         let agent = request.agent(app);
         var code;
 
-        it("AUTH ROUTE / should reconnect user 1 (ADMIN) for access page ", async () => {
+        it("AUTH ROUTE / should connect user 1 (ADMIN) for access page ", async () => {
             const res = await agent
                 .post("/")
                 .send(users_test[1][0]);
