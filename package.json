@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha ./tests/test.js --timeout 10000 --exit",
     "start": "./node_modules/.bin/nodemon ./server.js",
-    "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./tests/test.js"
+    "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./tests/test.js --timeout 10000 --exit"
   },
   "author": "",
   "license": "ISC",

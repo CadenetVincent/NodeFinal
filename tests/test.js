@@ -9,7 +9,6 @@ const schools_test = require("./schools_test.js");
 describe("/User", () => {
 
     before(async function() {
-        this.enableTimeouts(false);
         await User.deleteMany({});
     });
 
