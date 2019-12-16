@@ -1,5 +1,7 @@
 
-https://travis-ci.com/CadenetVincent/NodeFinal.svg?branch=master
+<img src="https://travis-ci.com/CadenetVincent/NodeFinal.svg?branch=master" />
+
+[![Build Status](https://travis-ci.com/CadenetVincent/NodeFinal.svg?branch=master)](https://travis-ci.com/CadenetVincent/NodeFinal)
 
 ################
 # Project name #
