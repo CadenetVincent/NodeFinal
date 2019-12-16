@@ -12,14 +12,13 @@ const schoolRoute = require('./route/school.route.js');
 
 var port = 4444;
 
-mongoose.connect('mongodb://localhost:27017/ececadenetfritel');
-var db = mongoose.connection;
-
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb+srv://User:User@cluster0-k3dxs.gcp.mongodb.net/ececadenetfritel", { useNewUrlParser: true }).then(
   () => {console.log('Database is connected') },
   err => { console.log('Can not connect to the database'+ err)}
 );
+
+var db = mongoose.connection;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
