@@ -7,15 +7,15 @@ var router = express.Router();
 var User = require("../model/auth.model.js");
 var school = require("../model/school.model.js");
 
-router.get("/",async function(req, res) {
-
+router.get("/", async function(req, res) {
     var isuser = "";
     try {
         isuser = req.session.user._id;
-    } catch {console.log("error")}
+    } catch {
+        console.log("error");
+    }
 
     if (isuser !== "" && isuser !== undefined) {
-
         User.findById(isuser).exec(function(error, user) {
             if (error) {
                 return next(error);
@@ -43,7 +43,7 @@ router.get("/",async function(req, res) {
                     res.render("acceuil", {
                         success: true,
                         user: req.session.user,
-                        nbr_school : 0
+                        nbr_school: 0
                     });
                 }
             }
@@ -70,15 +70,15 @@ router.get("/",async function(req, res) {
     }
 });
 
-router.get("/register",async function(req, res) {
-
+router.get("/register", async function(req, res) {
     var isuser = "";
     try {
         isuser = req.session.user._id;
-    } catch {console.log("error")}
+    } catch {
+        console.log("error");
+    }
 
     if (isuser !== "") {
-
         User.findById(isuser).exec(function(error, user) {
             if (error) {
                 return next(error);
@@ -90,45 +90,48 @@ router.get("/register",async function(req, res) {
                         fields: [
                             {
                                 name: "email",
-                                prettyname : "Email",
+                                prettyname: "Email",
                                 type: "text",
                                 property: "required",
                                 error: ""
                             },
                             {
                                 name: "password",
-                                prettyname : "Password",
+                                prettyname: "Password",
                                 type: "password",
                                 property: "required",
                                 error: ""
                             },
                             {
                                 name: "passwordConf",
-                                prettyname : "Password confirm",
+                                prettyname: "Password confirm",
                                 type: "password",
                                 property: "required",
                                 error: ""
                             },
                             {
                                 name: "username",
-                                prettyname : "User name",
+                                prettyname: "User name",
                                 type: "text",
                                 property: "required",
                                 error: ""
                             },
                             {
-                              name: "status",
-                              prettyname : "Status",
-                              type: "select",
-                              queries : ["admin","user"],
-                              property: "required",
-                              error: ""
+                                name: "status",
+                                prettyname: "Status",
+                                type: "select",
+                                queries: ["admin", "user"],
+                                property: "required",
+                                error: ""
                             }
-
                         ]
                     });
                 } else {
-                    res.render("acceuil", { success: true, user: req.session.user, nbr_school : 0 });
+                    res.render("acceuil", {
+                        success: true,
+                        user: req.session.user,
+                        nbr_school: 0
+                    });
                 }
             }
         });
@@ -139,39 +142,39 @@ router.get("/register",async function(req, res) {
             fields: [
                 {
                     name: "email",
-                    prettyname : "Email",
+                    prettyname: "Email",
                     type: "text",
                     property: "required",
                     error: ""
                 },
                 {
                     name: "password",
-                    prettyname : "Password",
+                    prettyname: "Password",
                     type: "password",
                     property: "required",
                     error: ""
                 },
                 {
                     name: "passwordConf",
-                    prettyname : "Password confirm",
+                    prettyname: "Password confirm",
                     type: "password",
                     property: "required",
                     error: ""
                 },
                 {
                     name: "username",
-                    prettyname : "User name",
+                    prettyname: "User name",
                     type: "text",
                     property: "required",
                     error: ""
                 },
                 {
-                  name: "status",
-                  prettyname : "Status",
-                  type: "select",
-                  queries : ["admin","user"],
-                  property: "required",
-                  error: ""
+                    name: "status",
+                    prettyname: "Status",
+                    type: "select",
+                    queries: ["admin", "user"],
+                    property: "required",
+                    error: ""
                 }
             ]
         });
@@ -183,11 +186,10 @@ router.get("/register",async function(req, res) {
 router.get("/menu", async function(req, res) {
     var user_id;
 
-    try
-    {
-    user_id = req.session.user._id;
-    }catch{
-    user_id = null;
+    try {
+        user_id = req.session.user._id;
+    } catch {
+        user_id = null;
     }
 
     User.findById(user_id).exec(async function(error, user) {
@@ -201,14 +203,14 @@ router.get("/menu", async function(req, res) {
                     fields: [
                         {
                             name: "logemail",
-                            prettyname : "Email",
+                            prettyname: "Email",
                             type: "text",
                             property: "required",
                             error: ""
                         },
                         {
                             name: "logpassword",
-                            prettyname : "Password",
+                            prettyname: "Password",
                             type: "password",
                             property: "required",
                             error: ""
@@ -216,11 +218,14 @@ router.get("/menu", async function(req, res) {
                     ]
                 });
             } else {
-
                 querie_2 = school.find().where("user_id", user_id);
                 nbr_school_user = await querie_2.exec();
 
-                return res.render("acceuil", { success: true, user: user, nbr_school : 0 });
+                return res.render("acceuil", {
+                    success: true,
+                    user: user,
+                    nbr_school: 0
+                });
             }
         }
     });
@@ -228,8 +233,7 @@ router.get("/menu", async function(req, res) {
 
 // ADD A USER IN THE DATABASE
 
-router.post("/",async function(req, res, next) {
-    
+router.post("/", async function(req, res, next) {
     if (req.body.password !== req.body.passwordConf) {
         var err = new Error("Passwords do not match.");
         err.status = 400;
@@ -244,7 +248,6 @@ router.post("/",async function(req, res, next) {
         req.body.passwordConf
     ) {
         const { errors, isValid } = validateRegisterInput(req.body);
-
 
         if (!isValid) {
             return res.status(400).json(errors);
@@ -277,10 +280,13 @@ router.post("/",async function(req, res, next) {
                     else {
                         newUser.password = hash;
                         req.session.user = newUser;
-                        
-                        newUser.save().then(user => {
 
-                           res.status(200).render("acceuil", { success: true, user: newUser, nbr_school : 0 });
+                        newUser.save().then(user => {
+                            res.status(200).render("acceuil", {
+                                success: true,
+                                user: newUser,
+                                nbr_school: 0
+                            });
                         });
                     }
                 });
@@ -296,14 +302,14 @@ router.post("/",async function(req, res, next) {
                 fields: [
                     {
                         name: "logemail",
-                        prettyname : "Email",
+                        prettyname: "Email",
                         type: "text",
                         property: "required",
                         error: errors.email
                     },
                     {
                         name: "logpassword",
-                        prettyname : "Password",
+                        prettyname: "Password",
                         type: "password",
                         property: "required",
                         error: errors.password
@@ -324,14 +330,14 @@ router.post("/",async function(req, res, next) {
                     fields: [
                         {
                             name: "logemail",
-                            prettyname : "Email",
+                            prettyname: "Email",
                             type: "text",
                             property: "required",
                             error: errors.email
                         },
                         {
                             name: "logpassword",
-                            prettyname : "Password",
+                            prettyname: "Password",
                             type: "password",
                             property: "required",
                             error: ""
@@ -351,7 +357,11 @@ router.post("/",async function(req, res, next) {
 
                     req.session.user = user;
 
-                    res.render("acceuil", { success: true, user: payload, nbr_school : 0 });
+                    res.render("acceuil", {
+                        success: true,
+                        user: payload,
+                        nbr_school: 0
+                    });
                 } else {
                     errors.password = "Incorrect Password";
                     return res.status(404).render("form", {
@@ -360,14 +370,14 @@ router.post("/",async function(req, res, next) {
                         fields: [
                             {
                                 name: "logemail",
-                                prettyname : "Email",
+                                prettyname: "Email",
                                 type: "text",
                                 property: "required",
                                 error: ""
                             },
                             {
                                 name: "logpassword",
-                                prettyname : "Password",
+                                prettyname: "Password",
                                 type: "password",
                                 property: "required",
                                 error: errors.password

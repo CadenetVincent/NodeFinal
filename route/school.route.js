@@ -5,7 +5,6 @@ const schoolRoutes = express.Router();
 let school = require("../model/school.model");
 let User = require("../model/auth.model");
 
-
 // GET FORM SCHOOL TO ADD ONE
 
 schoolRoutes.get("/form", async function(req, res) {
@@ -615,12 +614,14 @@ schoolRoutes.route("/delete/:id").delete(async function(req, res) {
         actual_user._id.toString() == user_id.toString() &&
         actual_user._id != ""
     ) {
-        school.findByIdAndRemove({ _id: req.params.id }, async function(err, school) {
-            if (err){
-            res.status(404).json(err);
-            }
-            else{
-            res.status(200).redirect("/school/byuser");
+        school.findByIdAndRemove({ _id: req.params.id }, async function(
+            err,
+            school
+        ) {
+            if (err) {
+                res.status(404).json(err);
+            } else {
+                res.status(200).redirect("/school/byuser");
             }
         });
     } else {
