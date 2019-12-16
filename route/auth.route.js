@@ -12,7 +12,7 @@ router.get("/",async function(req, res) {
     var isuser = "";
     try {
         isuser = req.session.user._id;
-    } catch {}
+    } catch {console.log("error")}
 
     if (isuser !== "" && isuser !== undefined) {
 
@@ -75,7 +75,7 @@ router.get("/register",async function(req, res) {
     var isuser = "";
     try {
         isuser = req.session.user._id;
-    } catch {}
+    } catch {console.log("error")}
 
     if (isuser !== "") {
 
