@@ -73,7 +73,7 @@ npm run starttwo
 
 
 ###############
-# Contribuors #
+# Contributors #
 ###############
 
 Developers : 
