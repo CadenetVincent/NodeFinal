@@ -1,3 +1,6 @@
+
+https://travis-ci.com/CadenetVincent/NodeFinal.svg?branch=master
+
 ################
 # Project name #
 ################
