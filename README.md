@@ -10,6 +10,7 @@
 
 [![Build Status](https://www.code-inspector.com/project/2264/score/svg)](https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard)
 
+[![Coverage Status](https://coveralls.io/repos/github/CadenetVincent/NodeFinal/badge.svg?branch=master)](https://coveralls.io/github/CadenetVincent/NodeFinal?branch=master)
 
 
 
