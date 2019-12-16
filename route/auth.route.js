@@ -12,6 +12,7 @@ router.get("/", async function(req, res) {
     try {
         isuser = req.session.user._id;
     } catch {
+        isuser = "";
         console.log("error");
     }
 
@@ -75,6 +76,7 @@ router.get("/register", async function(req, res) {
     try {
         isuser = req.session.user._id;
     } catch {
+        isuser = "";
         console.log("error");
     }
 
@@ -189,7 +191,7 @@ router.get("/menu", async function(req, res) {
     try {
         user_id = req.session.user._id;
     } catch {
-        user_id = null;
+        isuser = "";
     }
 
     User.findById(user_id).exec(async function(error, user) {
