@@ -1,7 +1,11 @@
 
-<img src="https://travis-ci.com/CadenetVincent/NodeFinal.svg?branch=master" />
 
 [![Build Status](https://travis-ci.com/CadenetVincent/NodeFinal.svg?branch=master)](https://travis-ci.com/CadenetVincent/NodeFinal)
+
+<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/CadenetVincent/NodeFinal">
+<img alt="Last Version" src="https://img.shields.io/github/package-json/v/CadenetVincent/NodeFinal">
+<img alt="Last Version" src="https://img.shields.io/github/languages/code-size/CadenetVincent/NodeFinal">
+
 
 ################
 # Project name #
