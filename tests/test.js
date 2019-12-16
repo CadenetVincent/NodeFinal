@@ -7,7 +7,9 @@ const users_test = require("./auth_test.js");
 const schools_test = require("./schools_test.js");
 
 describe("/User", () => {
+
     before(async function() {
+        this.enableTimeouts(false);
         await User.deleteMany({});
     });
 
@@ -19,7 +21,6 @@ describe("/User", () => {
                 .send(users_test[2][0]);
 
             expect(res.status).to.equal(200);
-            
         });
 
         it("AUTH ROUTE / should NOT add an existing user inscription", async () => {
@@ -217,102 +218,5 @@ describe("/User", () => {
             expect(res.status).to.equal(302);
         });
     });
-    /*
 
-  describe("GET /", () => {
-    it("should return all users", async () => {
-      await User.insertMany(users_test.data_auth);
-      const res = await request(app).get("/user/");
-      expect(res.status).to.equal(200);
-      expect(res.body.length).to.equal(3);
-    });
-  });
-
-  describe("GET/:id", () => {
-    it("should return a user if valid id is passed", async () => {
-      await users_test.data_auth[0].save();
-      const res = await request(app).get("/user/edit/" + users_test.data_auth[0]._id);
-      expect(res.status).to.equal(200);
-      expect(res.body).to.have.property("username", users_test.data_auth[0].username);
-    });
-
-    it("should return 400 error when invalid object id is passed", async () => {
-      const res = await request(app).get("/user/edit/1");
-      expect(res.status).to.equal(400);
-    });
-
-    it("should return 404 error when valid object id is passed but does not exist", async () => {
-      const res = await request(app).get("/user/edit/111111111111");
-      expect(res.status).to.equal(404);
-    });
-  });
-
-  describe("POST /", () => {
-    it("should return user when the all request body is valid", async () => {
-      const res = await request(app)
-        .post("/api/users")
-        .send({
-          name: "test",
-          email: "test@gmail.com",
-          gender: "male"
-        });
-      expect(res.status).to.equal(200);
-      expect(res.body).to.have.property("_id");
-      expect(res.body).to.have.property("name", "test");
-    });
-
-    // add more tests to validate request body accordingly eg, make sure name is more than 3 characters etc
-  });
-
-  describe("PUT /:id", () => {
-    it("should update the existing order and return 200", async () => {
-      const user = new User({
-        name: "test",
-        email: "test@gmail.com",
-        gender: "male"
-      });
-      await user.save();
-
-      const res = await request(app)
-        .put("/api/users/" + user._id)
-        .send({
-          name: "newTest",
-          email: "newemail@gmail.com",
-          gender: "male"
-        });
-
-      expect(res.status).to.equal(200);
-      expect(res.body).to.have.property("name", "newTest");
-    });
-  });
-
-  describe("DELETE /:id", () => {
-    it("should delete requested id and return response 200", async () => {
-      const user = new User({
-        name: "test",
-        email: "test@gmail.com",
-        gender: "male"
-      });
-      await user.save();
-
-      const res = await request(app).delete("/api/users/" + user._id);
-      expect(res.status).to.be.equal(200);
-    });
-
-    it("should return 404 when deleted user is requested", async () => {
-      const user = new User({
-        name: "test",
-        email: "test@gmail.com",
-        gender: "male"
-      });
-      await user.save();
-
-      let res = await request(app).delete("/api/users/" + user._id);
-      expect(res.status).to.be.equal(200);
-
-      res = await request(app).get("/api/users/" + user._id);
-      expect(res.status).to.be.equal(404);
-    });
-  });
-  */
 });
