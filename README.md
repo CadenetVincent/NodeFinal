@@ -4,7 +4,13 @@
 
 <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/CadenetVincent/NodeFinal">
 <img alt="Last Version" src="https://img.shields.io/github/package-json/v/CadenetVincent/NodeFinal">
-<img alt="Last Version" src="https://img.shields.io/github/languages/code-size/CadenetVincent/NodeFinal">
+<img alt="Size" src="https://img.shields.io/github/languages/code-size/CadenetVincent/NodeFinal">
+
+[![Build Status](https://www.code-inspector.com/project/2264/status/svg)](https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard)
+
+[![Build Status](https://www.code-inspector.com/project/2264/score/svg)](https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard)
+
+
 
 
 ################
