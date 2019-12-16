@@ -2,17 +2,16 @@
 
 [![Build Status](https://travis-ci.com/CadenetVincent/NodeFinal.svg?branch=master)](https://travis-ci.com/CadenetVincent/NodeFinal)
 
-<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/CadenetVincent/NodeFinal">
-<img alt="Last Version" src="https://img.shields.io/github/package-json/v/CadenetVincent/NodeFinal">
-<img alt="Size" src="https://img.shields.io/github/languages/code-size/CadenetVincent/NodeFinal">
+[![Coverage Status](https://coveralls.io/repos/github/CadenetVincent/NodeFinal/badge.svg?branch=master)](https://coveralls.io/github/CadenetVincent/NodeFinal?branch=master)
 
 [![Build Status](https://www.code-inspector.com/project/2264/status/svg)](https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard)
 
 [![Build Status](https://www.code-inspector.com/project/2264/score/svg)](https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard)
 
-[![Coverage Status](https://coveralls.io/repos/github/CadenetVincent/NodeFinal/badge.svg?branch=master)](https://coveralls.io/github/CadenetVincent/NodeFinal?branch=master)
-
-
+<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/CadenetVincent/NodeFinal">
+<img alt="Last Version" src="https://img.shields.io/github/package-json/v/CadenetVincent/NodeFinal">
+<img alt="Size" src="https://img.shields.io/github/languages/code-size/CadenetVincent/NodeFinal">
+<img alt="docker-compose" src="https://img.shields.io/badge/docker--compose-mongo%20atlas%20%2B%20node-blueviolet">
 
 ################
 # Project name #
