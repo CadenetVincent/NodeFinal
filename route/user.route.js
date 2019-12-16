@@ -11,11 +11,11 @@ userRoutes.get("/", async function(req, res) {
     var querie_2;
     var actual_user = { _id: "", status: "" };
 
-    try {
+    try{
         user_id = req.session.user._id;
         querie_2 = User.findById(user_id);
         actual_user = await querie_2.exec();
-    } catch {
+    }catch(e){
         user_id = "";
         actual_user._id = "";
         actual_user.status = "";
@@ -45,11 +45,11 @@ userRoutes.get("/byadmin", async function(req, res) {
     var querie_2;
     var actual_user = { _id: "", status: "" };
 
-    try {
+    try{
         user_id = req.session.user._id;
         querie_2 = User.findById(user_id);
         actual_user = await querie_2.exec();
-    } catch {
+    }catch(e){
         user_id = "";
         actual_user._id = "";
         actual_user.status = "";
@@ -100,11 +100,11 @@ userRoutes.get("/edit/:id", async function(req, res) {
     var querie_2;
     var actual_user = { _id: "", status: "" };
 
-    try {
+    try{
         user_id = req.session.user._id;
         querie_2 = User.findById(user_id);
         actual_user = await querie_2.exec();
-    } catch {
+    }catch(e){
         user_id = "";
         actual_user._id = "";
         actual_user.status = "";
@@ -182,15 +182,15 @@ userRoutes.get("/name/:name", async function(req, res) {
     var querie_2;
     var actual_user = { _id: "", status: "" };
 
-    try {
+    try{
         user_id = req.session.user._id;
-    } catch (e) {
+    }catch (e){
         user_id = "";
     }
-    try {
+    try{
         querie_2 = User.findById(user_id);
         actual_user = await querie_2.exec();
-    } catch (e) {
+    }catch(e){
         actual_user = { _id: "", status: "" };
     }
 
@@ -201,10 +201,10 @@ userRoutes.get("/name/:name", async function(req, res) {
         let name = req.params.name;
         var user_search = [];
 
-        try {
+        try{
             const querie_1 = User.find().where("username", name);
             user_search = await querie_1.exec();
-        } catch (e) {
+        }catch(e){
             user_search = [];
         }
 
@@ -247,11 +247,11 @@ userRoutes.post("/update/:id", async function(req, res) {
     var querie_2;
     var actual_user = { _id: "", status: "" };
 
-    try {
+    try{
         user_id = req.session.user._id;
         querie_2 = User.findById(user_id);
         actual_user = await querie_2.exec();
-    } catch {
+    }catch(e){
         user_id = "";
         actual_user._id = "";
         actual_user.status = "";
@@ -311,11 +311,11 @@ userRoutes.route("/delete/:id").delete(async function(req, res) {
     var querie_2;
     var actual_user = { _id: "", status: "" };
 
-    try {
+    try{
         user_id = req.session.user._id;
         querie_2 = User.findById(user_id);
         actual_user = await querie_2.exec();
-    } catch {
+    }catch(e){
         user_id = "";
         actual_user._id = "";
         actual_user.status = "";

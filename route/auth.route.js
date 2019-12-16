@@ -9,9 +9,9 @@ var school = require("../model/school.model.js");
 
 router.get("/", async function(req, res) {
     var isuser = "";
-    try {
+    try{
         isuser = req.session.user._id;
-    } catch {
+    }catch(e){
         isuser = "";
         console.log("error");
     }
@@ -73,9 +73,9 @@ router.get("/", async function(req, res) {
 
 router.get("/register", async function(req, res) {
     var isuser = "";
-    try {
+    try{
         isuser = req.session.user._id;
-    } catch {
+    }catch(e){
         isuser = "";
         console.log("error");
     }
@@ -188,9 +188,9 @@ router.get("/register", async function(req, res) {
 router.get("/menu", async function(req, res) {
     var user_id;
 
-    try {
+    try{
         user_id = req.session.user._id;
-    } catch {
+    }catch(e){
         isuser = "";
     }
 
