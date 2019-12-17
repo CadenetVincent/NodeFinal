@@ -8,7 +8,7 @@
 
 [![Build Status](https://www.code-inspector.com/project/2264/score/svg)](https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard)
 
-[![Known Vulnerabilities](https://snyk.io/test/github/CadenetVincent/NodeFinal/badge.svg?targetFile=package.json)](https://snyk.io/test/github/CadenetVincent/NodeFinal?targetFile=package.json)
+<a href="https://snyk.io/test/github/CadenetVincent/NodeFinal?targetFile=package.json"><img src="https://snyk.io/test/github/CadenetVincent/NodeFinal/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/CadenetVincent/NodeFinal?targetFile=package.json" style="max-width:100%;"></a>
 
 <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/CadenetVincent/NodeFinal">
 <img alt="Last Version" src="https://img.shields.io/github/package-json/v/CadenetVincent/NodeFinal">
