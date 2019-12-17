@@ -1,4 +1,4 @@
-
+# Badges #
 
 [![Build Status](https://travis-ci.com/CadenetVincent/NodeFinal.svg?branch=master)](https://travis-ci.com/CadenetVincent/NodeFinal)
 
@@ -13,28 +13,14 @@
 <img alt="Size" src="https://img.shields.io/github/languages/code-size/CadenetVincent/NodeFinal">
 <img alt="docker-compose" src="https://img.shields.io/badge/docker--compose-mongo%20atlas%20%2B%20node-blueviolet">
 
-################
 # Project name #
-################
 
-ECE Class work Node.js 2019
+ECE Project Work : DevObs & Nodejs 2019 December
 
-#########################
 # Resume / Introduction #
-#########################
 
-Some different task to do and share with our teacher.
 
-First TP_03 the 01/12/2019 with LevelDB :
-
-1. Add a `get` function to `metrics` module
-2. Add a route to get a metric (one of the metric, all the metrics)
-3. Add a `delete` function to `metrics` module
-4. Add a route to delete a metric based on its key
-
-#################
 # Prerequisites #
-#################
 
 The project is running on Windows.
 The version of node is : v12.13.0 in my computer
@@ -60,10 +46,7 @@ And others in public/ :
 Bootstrap v4.3.1 (https://getbootstrap.com/)
 jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license 
 
-
-###########################
 # Install the application #
-###########################
 
 Our public git :
 
@@ -86,17 +69,18 @@ npm run starttwo
 
 !!!!!!! IMPORTANT !!!!!!!!
 
-
-###############
 # Contribuors #
-###############
 
-Developers : 
+- CADENET Vincent Gr02 SI ECE (github : https://github.com/CadenetVincent email : vincad-20@hotmail.fr)
+- FRITEL Ludovic Gr02 SI ECE (github : https://github.com/LudoSouthPigalle email : ludovicfritel@gmail.com)
 
-CADENET Vincent Gr02 SI ECE (github : https://github.com/CadenetVincent email : vincad-20@hotmail.fr)
-FRITEL Ludovic Gr02 SI ECE (github : https://github.com/LudoSouthPigalle email : ludovicfritel@gmail.com)
+# license & copyright #
 
-ECE Paris 
+Vincent Cadenet and Fritel Ludovic, ECE Paris
+
+Licensed under the [MIT License](LICENSE)
+
+
 
 
 

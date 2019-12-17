@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 4444
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "test"]
