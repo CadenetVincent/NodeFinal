@@ -8,7 +8,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports : 
-      - '4444:4444'
+      - '3000:3000'
     links:
       - mongo
 
