@@ -21,7 +21,7 @@ ECE Project Work : DevObs & Nodejs 2019 December
 
 # Resume / Introduction #
 
-What we use ? 
+### What we use ? 
 
 - [x] `Language` : NodeJS, EJS, express, MongoDB (NoSQL), Linux.
 - [x] `Database` : MongoDB Atlas.
@@ -30,6 +30,7 @@ What we use ?
 - [x] `Code verification` : Code-inspector,snyk.io.
 - [x] `Deployment` : Docker, Docker-compose, Heroku (production).
 
+### See more about ...
 
 | Realisations | URL |
 |---------|-------|
@@ -41,10 +42,12 @@ What we use ?
 
 # Prerequisites #
 
-The project is running on Ubuntu 18.04.3 LTS (Linux).
+> The project is running on Ubuntu 18.04.3 LTS (Linux).
 
 > The version of node used is : v12.13.0.
-The version of npm used is : v6.12.1.
+
+> The version of npm used is : v6.12.1.
+
 The version of :
 - Docker-compose version 1.18.0, build 8dd22a9
 - Docker version 19.03.5, build 633a0ea838
@@ -52,11 +55,11 @@ The version of :
 
 Dependencies, DevDependencies are accessible in the package.json.
 
-Public file :
+Public file folder :
 
-Bootstrap v4.3.1 (https://getbootstrap.com/)
-jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license 
-Chart.js v2.9.3 | https://www.chartjs.org | (c) 2019 Chart.js Contributors | Released under the MIT License
+> Bootstrap v4.3.1 (https://getbootstrap.com/)
+> jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license 
+> Chart.js v2.9.3 | https://www.chartjs.org | (c) 2019 Chart.js Contributors | Released under the MIT License
 
 # Install & build the application #
 
@@ -75,14 +78,19 @@ Install the application :
 Build & start unit test with Nodejs, MongoDB Atlas, Mocha/Chai, Travis-CI and Coveralls : 
 
 - Docker-compose : 
-$ sudo docker-compose up --build
+
+    $ sudo docker-compose up --build
+
 - NPM : 
-$ npm run test
+
+    $ npm run test
 
 ### Run the Node Application : 
 
 - NPM : 
-$ npm run startece
+
+    $ npm run startece
+
 - Heroku : https://finalnodecadenet.herokuapp.com/
 
 # Contribuors #
@@ -92,9 +100,8 @@ $ npm run startece
 
 # license & copyright #
 
-Vincent Cadenet and Fritel Ludovic, ECE Paris
-
-Licensed under the [MIT License](LICENSE)
+> Vincent Cadenet and Fritel Ludovic, ECE Paris
+> Licensed under the [MIT License](LICENSE)
 
 # server.js (main of the project) #
 
