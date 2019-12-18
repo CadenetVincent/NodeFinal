@@ -30,32 +30,20 @@ What we use ?
 - [x] `Code verification` : Code-inspector,snyk.io.
 - [x] `Deployment` : Docker, Docker-compose, Heroku (production).
 
-Heroku deployment : 
 
-https://finalnodecadenet.herokuapp.com/
-
-Code inspector : 
-
-https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard
-https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard
-
-Coverage Status :
-
-https://coveralls.io/github/CadenetVincent/NodeFinal?branch=master
-
-Build Status :
-
-https://travis-ci.com/CadenetVincent/NodeFinal
-
-Vulnerabilities :
-
-https://snyk.io/test/github/CadenetVincent/NodeFinal
+| Realisations | URL |
+|---------|-------|
+| Heroku deployment :  | https://finalnodecadenet.herokuapp.com/ |
+| Code inspector : | https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard |
+| Coverage Status : | https://coveralls.io/github/CadenetVincent/NodeFinal?branch=master |
+| Build Status : | https://travis-ci.com/CadenetVincent/NodeFinal |
+| Vulnerabilities : | https://snyk.io/test/github/CadenetVincent/NodeFinal |
 
 # Prerequisites #
 
 The project is running on Ubuntu 18.04.3 LTS (Linux).
 
-The version of node used is : v12.13.0.
+> The version of node used is : v12.13.0.
 The version of npm used is : v6.12.1.
 The version of :
 - Docker-compose version 1.18.0, build 8dd22a9
@@ -78,20 +66,23 @@ https://github.com/CadenetVincent/NodeFinal
 
 Install the application :
 
-- git clone https://github.com/CadenetVincent/NodeFinal
-- cd NodeFinal
-- npm install
+    $ git clone https://github.com/CadenetVincent/NodeFinal
+    $ cd NodeFinal
+    $ npm install
 
-Build and start the application : 
+### Build and start the application : 
 
 Build & start unit test with Nodejs, MongoDB Atlas, Mocha/Chai, Travis-CI and Coveralls : 
 
-- Docker-compose : sudo docker-compose up --build
-- NPM : npm run test
+- Docker-compose : 
+$ sudo docker-compose up --build
+- NPM : 
+$ npm run test
 
-Run the Node Application : 
+### Run the Node Application : 
 
-- NPM : npm run startece
+- NPM : 
+$ npm run startece
 - Heroku : https://finalnodecadenet.herokuapp.com/
 
 # Contribuors #
