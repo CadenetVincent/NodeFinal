@@ -19,6 +19,8 @@ ECE Project : DevObs & Nodejs 2019 December
 <img alt="Size" src="https://img.shields.io/github/languages/code-size/CadenetVincent/NodeFinal">
 <img alt="docker-compose" src="https://img.shields.io/badge/docker--compose-mongo%20atlas%20%2B%20node-blueviolet">
 
+[![](https://codescene.io/projects/6384/status.svg) Get more details at **codescene.io**.](https://codescene.io/projects/6384/jobs/latest-successful/results)
+
 # Resume / Introduction #
 
 ### What we use ? 
