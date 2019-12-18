@@ -21,55 +21,69 @@ ECE Project Work : DevObs & Nodejs 2019 December
 
 # Resume / Introduction #
 
+Heroku deployment : 
+
+https://finalnodecadenet.herokuapp.com/
+
+Code inspector : 
+
+https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard
+https://www.code-inspector.com/public/project/2264/NodeFinal/dashboard
+
+Coverage Status :
+
+https://coveralls.io/github/CadenetVincent/NodeFinal?branch=master
+
+Build Status :
+
+https://travis-ci.com/CadenetVincent/NodeFinal
+
+Vulnerabilities :
+
+https://snyk.io/test/github/CadenetVincent/NodeFinal
 
 # Prerequisites #
 
-The project is running on Windows.
-The version of node is : v12.13.0 in my computer
-The version of npm is : v6.12.1 in my computer
-See all the packet npm :
-    "body-parser": "^1.19.0",
-    "ejs": "^2.7.4",
-    "encoding-down": "^6.3.0",
-    "express": "^4.17.1",
-    "level-ws": "^2.0.0",
-    "leveldown": "^5.4.1",
-    "levelup": "^4.3.2",
-    "nodemon": "^2.0.0",
-    "ts-node": "^8.5.2"
+The project is running on Ubuntu 18.04.3 LTS (Linux).
 
-And dev dependancies :
-    "@types/express": "^4.17.2",
-    "@types/levelup": "^3.1.1",
-    "@types/node": "^12.12.12",
-    "typescript": "^3.7.2"
+The version of node used is : v12.13.0.
+The version of npm used is : v6.12.1.
+The version of :
+- Docker-compose version 1.18.0, build 8dd22a9
+- Docker version 19.03.5, build 633a0ea838
+- Heroku-CLI heroku/7.35.0 linux-x64 node-v12.13.
 
-And others in public/ :
+Dependencies, DevDependencies are accessible in the package.json.
+
+Public file :
+
 Bootstrap v4.3.1 (https://getbootstrap.com/)
 jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license 
+Chart.js v2.9.3 | https://www.chartjs.org | (c) 2019 Chart.js Contributors | Released under the MIT License
 
-# Install the application #
+# Install & build the application #
 
 Our public git :
 
-https://github.com/CadenetVincent/node_curse
+https://github.com/CadenetVincent/NodeFinal
 
 Install the application :
 
-git clone https://github.com/CadenetVincent/node_curse
-cd node_curse
+git clone https://github.com/CadenetVincent/NodeFinal
+cd NodeFinal
 npm install
-npm start
 
 Build and start the application : 
 
-!!!!!!! IMPORTANT !!!!!!!!
+Build & start unit test with Nodejs, MongoDB Atlas, Mocha/Chai, Travis-CI and Coveralls : 
 
-if you want to start the good project with LevelDB :
+Docker-compose : sudo docker-compose up --build
+NPM : npm run test
 
-npm run starttwo
+Run the Node Application : 
 
-!!!!!!! IMPORTANT !!!!!!!!
+NPM : npm run startece
+Heroku : https://finalnodecadenet.herokuapp.com/
 
 # Contribuors #
 
