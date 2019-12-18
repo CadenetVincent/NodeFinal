@@ -1,3 +1,7 @@
+# Project name #
+
+ECE Project Work : DevObs & Nodejs 2019 December
+
 # Badges #
 
 [![Build Status](https://travis-ci.com/CadenetVincent/NodeFinal.svg?branch=master)](https://travis-ci.com/CadenetVincent/NodeFinal)
@@ -15,20 +19,16 @@
 <img alt="Size" src="https://img.shields.io/github/languages/code-size/CadenetVincent/NodeFinal">
 <img alt="docker-compose" src="https://img.shields.io/badge/docker--compose-mongo%20atlas%20%2B%20node-blueviolet">
 
-# Project name #
-
-ECE Project Work : DevObs & Nodejs 2019 December
-
 # Resume / Introduction #
 
 What we use ? 
 
-- `Language` : NodeJS, EJS, express, MongoDB (NoSQL), Linux.
-- `Database` : MongoDB Atlas.
-- `CI/CD` : Travis-CI, Coveralls. 
-- `Unit Test` : Mocha/Chai, Nodejs. 
-- `Code verification` : Code-inspector,snyk.io.
-- `Deployment` : Docker, Docker-compose, Heroku (production).
+- [x] `Language` : NodeJS, EJS, express, MongoDB (NoSQL), Linux.
+- [x] `Database` : MongoDB Atlas.
+- [x] `CI/CD` : Travis-CI, Coveralls. 
+- [x] `Unit Test` : Mocha/Chai, Nodejs. 
+- [x] `Code verification` : Code-inspector,snyk.io.
+- [x] `Deployment` : Docker, Docker-compose, Heroku (production).
 
 Heroku deployment : 
 
