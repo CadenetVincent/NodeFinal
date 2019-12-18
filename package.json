@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "./node_modules/.bin/nodemon ./server.js",
+    "start" : "node server.js",
+    "startece": "./node_modules/.bin/nodemon ./server.js",
     "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./tests/test.js --timeout 5000 --exit"
   },
   "author": "",
