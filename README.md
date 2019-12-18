@@ -58,7 +58,9 @@ Dependencies, DevDependencies are accessible in the package.json.
 Public file folder :
 
 > Bootstrap v4.3.1 (https://getbootstrap.com/)
+
 > jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license 
+
 > Chart.js v2.9.3 | https://www.chartjs.org | (c) 2019 Chart.js Contributors | Released under the MIT License
 
 # Install & build the application #
@@ -101,6 +103,7 @@ Build & start unit test with Nodejs, MongoDB Atlas, Mocha/Chai, Travis-CI and Co
 # license & copyright #
 
 > Vincent Cadenet and Fritel Ludovic, ECE Paris
+
 > Licensed under the [MIT License](LICENSE)
 
 # server.js (main of the project) #
