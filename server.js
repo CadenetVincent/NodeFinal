@@ -38,11 +38,6 @@ app.use(session({
   })
 }));
 
-app.get('/', function(req, res) {
-    "use strict";
-    res.send('hello');
-});
-
 app.use('/', authRoute);
 app.use('/user', userRoute);
 app.use('/school', schoolRoute);
