@@ -1,6 +1,6 @@
-# Project name #
+# Node Final #
 
-ECE Project Work : DevObs & Nodejs 2019 December
+ECE Project : DevObs & Nodejs 2019 December
 
 # Badges #
 
@@ -79,21 +79,23 @@ Install the application :
 
 Build & start unit test with Nodejs, MongoDB Atlas, Mocha/Chai, Travis-CI and Coveralls : 
 
-- Docker-compose : 
+Docker-compose : 
 
     $ sudo docker-compose up --build
 
-- NPM : 
+NPM : 
 
     $ npm run test
 
 ### Run the Node Application : 
 
-- NPM : 
+NPM : 
 
     $ npm run startece
 
-- Heroku : https://finalnodecadenet.herokuapp.com/
+Heroku : 
+
+https://finalnodecadenet.herokuapp.com/
 
 # Contribuors #
 
