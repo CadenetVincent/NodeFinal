@@ -1,15 +1,19 @@
 {
   "name": "final_project",
   "version": "1.0.0",
-  "description": "",
+  "description": "School work DevObs & Nodejs",
   "main": "server.js",
   "scripts": {
     "start" : "node server.js",
     "startece": "./node_modules/.bin/nodemon ./server.js",
     "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./tests/test.js --timeout 5000 --exit"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords":[
+    "example",
+    "heroku"
+  ],
+  "author": "Cadenet Vincent",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -33,5 +37,8 @@
     "jest": "^24.9.0",
     "jshint": "^2.11.0-rc1",
     "mocha-lcov-reporter": "^1.3.0"
+  },
+   "engines": {
+    "node": "10.x"
   }
 }
