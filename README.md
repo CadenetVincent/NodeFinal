@@ -21,14 +21,14 @@ ECE Project Work : DevObs & Nodejs 2019 December
 
 # Resume / Introduction #
 
-- What we use ? 
+What we use ? 
 
-Language : NodeJS, EJS, express, MongoDB (NoSQL), Linux.
-Database : MongoDB Atlas.
-CI/CD : Travis-CI, Coveralls. 
-Unit Test : Mocha/Chai, Nodejs. 
-Code verification : Code-inspector,snyk.io.
-Deployment : Docker, Docker-compose, Heroku (production).
+- `Language` : NodeJS, EJS, express, MongoDB (NoSQL), Linux.
+- `Database` : MongoDB Atlas.
+- `CI/CD` : Travis-CI, Coveralls. 
+- `Unit Test` : Mocha/Chai, Nodejs. 
+- `Code verification` : Code-inspector,snyk.io.
+- `Deployment` : Docker, Docker-compose, Heroku (production).
 
 Heroku deployment : 
 
@@ -78,21 +78,21 @@ https://github.com/CadenetVincent/NodeFinal
 
 Install the application :
 
-git clone https://github.com/CadenetVincent/NodeFinal
-cd NodeFinal
-npm install
+- git clone https://github.com/CadenetVincent/NodeFinal
+- cd NodeFinal
+- npm install
 
 Build and start the application : 
 
 Build & start unit test with Nodejs, MongoDB Atlas, Mocha/Chai, Travis-CI and Coveralls : 
 
-Docker-compose : sudo docker-compose up --build
-NPM : npm run test
+- Docker-compose : sudo docker-compose up --build
+- NPM : npm run test
 
 Run the Node Application : 
 
-NPM : npm run startece
-Heroku : https://finalnodecadenet.herokuapp.com/
+- NPM : npm run startece
+- Heroku : https://finalnodecadenet.herokuapp.com/
 
 # Contribuors #
 
@@ -104,6 +104,62 @@ Heroku : https://finalnodecadenet.herokuapp.com/
 Vincent Cadenet and Fritel Ludovic, ECE Paris
 
 Licensed under the [MIT License](LICENSE)
+
+# server.js (main of the project) #
+
+```typescript
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const path = require('path');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+
+const authRoute = require('./route/auth.route.js');
+const userRoute = require('./route/user.route.js');
+const schoolRoute = require('./route/school.route.js');
+
+var port =  process.env.PORT || 3000;
+
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb+srv://User:User@cluster0-k3dxs.gcp.mongodb.net/ececadenetfritel", { useNewUrlParser: true }).then(
+  () => {console.log('Database is connected') },
+  err => { console.log('Can not connect to the database'+ err)}
+);
+
+var db = mongoose.connection;
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+mongoose.set('useFindAndModify', false);
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, './public')));
+
+app.use(session({
+  secret: 'secret_Cadenet_Fritel',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
+
+app.use('/', authRoute);
+app.use('/user', userRoute);
+app.use('/school', schoolRoute);
+
+app.listen(port, function () {
+  "use strict";
+  console.log('Ready');
+});
+
+module.exports = app;
+
+```
 
 
 
