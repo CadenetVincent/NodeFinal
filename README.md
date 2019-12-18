@@ -21,6 +21,15 @@ ECE Project Work : DevObs & Nodejs 2019 December
 
 # Resume / Introduction #
 
+- What we use ? 
+
+Language : NodeJS, EJS, express, MongoDB (NoSQL), Linux.
+Database : MongoDB Atlas.
+CI/CD : Travis-CI, Coveralls. 
+Unit Test : Mocha/Chai, Nodejs. 
+Code verification : Code-inspector,snyk.io.
+Deployment : Docker, Docker-compose, Heroku (production).
+
 Heroku deployment : 
 
 https://finalnodecadenet.herokuapp.com/
