@@ -27,12 +27,14 @@ router.get("/", async function(req, res) {
                         fields: [
                             {
                                 name: "logemail",
+                                prettyname: "Email",
                                 type: "text",
                                 property: "required",
                                 error: ""
                             },
                             {
                                 name: "logpassword",
+                                prettyname: "Password",
                                 type: "password",
                                 property: "required",
                                 error: ""
@@ -55,12 +57,14 @@ router.get("/", async function(req, res) {
             fields: [
                 {
                     name: "logemail",
+                    prettyname: "Email",
                     type: "text",
                     property: "required",
                     error: ""
                 },
                 {
                     name: "logpassword",
+                    prettyname: "Password",
                     type: "password",
                     property: "required",
                     error: ""
