@@ -100,10 +100,12 @@ Heroku :
 
 https://finalnodecadenet.herokuapp.com/
 
-# Contribuors #
+# Contributors #
 
 - CADENET Vincent Gr02 SI ECE (github : https://github.com/CadenetVincent email : vincad-20@hotmail.fr)
 - FRITEL Ludovic Gr02 SI ECE (github : https://github.com/LudoSouthPigalle email : ludovicfritel@gmail.com)
+
+**[See More about contributors](https://github.com/CadenetVincent/NodeFinal/blob/master/CONTRIBUTORS.md)**
 
 # license & copyright #
 
