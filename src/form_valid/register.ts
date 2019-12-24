@@ -4,7 +4,7 @@ import Validator from 'validator';
 const Empty = require('./is_empty');
 
 module.exports = function validateRegisterInput(data:any) {
-    let errors = {username : "", email : "", password : "",passwordConf : ""};
+    var errors:any = "";
     
     data.username = !Empty(data.username) ? data.username : '';
     data.email = !Empty(data.email) ? data.email : '';

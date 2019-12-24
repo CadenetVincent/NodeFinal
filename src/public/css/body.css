@@ -1,0 +1,123 @@
+.error_field {
+	color: red;
+}
+
+.card_arrange{
+	padding: 10px 10px 10px 10px!important;
+}
+
+.center{
+	text-align: center;
+}
+
+body,footer {
+ font-family: 'Ubuntu', sans-serif!important;
+}
+
+.btn_school_grp
+{
+  background-color: #593D12;
+  border: 2px solid #593D12;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 10px 10px 10px;
+}
+
+.btn_school_grp:hover
+{
+  background-color: white;
+  border: 2px solid #593D12;
+  border-radius: 10px;
+  color: #593D12;
+  padding: 10px 10px 10px 10px;
+}
+
+.border
+{
+  border: 5px solid black !important;
+  background-color: brown;
+}
+
+.logout_btn
+{
+  background-color: #593D12;
+  border: 2px solid #593D12;
+  border-radius: 10px;
+}
+
+.logout_btn a 
+{
+  color: white;
+}
+
+.logout_btn:hover 
+{
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.logout_btn:hover > a
+{
+  color: #593D12;
+}
+
+
+footer
+{
+  background-color: #F8F9FA;
+  height: 4rem;
+  text-align: center;
+  margin-top: 4rem;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 1rem;
+}
+
+.footer_component_left {
+    float: left;
+}
+
+.footer_component_right {
+    float: right;
+}
+
+.rounded-circle{
+  width: 50px!important;
+  height: 50px!important;
+}
+
+  
+.navbar_title p
+{
+  color : #F56B2A;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.navbar_title:hover
+{
+  background-color: #F56B2A;
+}
+
+.navbar_title:hover > p
+{
+  color : white;
+}
+
+.navbar_title
+{
+  background-color: white;
+  border: 2px solid #593D12!important;
+  border-radius: 10px;
+  width: 11rem;
+}
+
+.table_used_school
+{
+  overflow-x:hidden;
+  table-layout:fixed;
+  word-wrap: break-word;
+}

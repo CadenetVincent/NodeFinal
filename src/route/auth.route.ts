@@ -251,6 +251,7 @@ router.post("/", async function(req:any, res:any, next:any) {
         const { errors, isValid } = validateRegisterInput(req.body);
 
         if (!isValid) {
+
             return res.status(400).json(errors);
         }
 
@@ -277,12 +278,16 @@ router.post("/", async function(req:any, res:any, next:any) {
                 });
 
                 bcrypt.hash(newUser.password, 10, (err:any, hash:any) => {
-                    if (err) res.status(404).send("SALT error");
+                    if (err)
+                    {
+                     res.status(404).send("SALT error");
+                    }
                     else {
+                        console.log("win")
                         newUser.password = hash;
                         req.session.user = newUser;
 
-                        newUser.save().then((user:any) => {
+                     return newUser.save().then((user:any) => {
                             res.status(200).render("acceuil", {
                                 success: true,
                                 user: newUser,
