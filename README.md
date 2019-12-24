@@ -77,7 +77,7 @@ Install the application :
     $ cd NodeFinal
     $ npm install
 
-### Build and start the application : 
+### Build and start Unit Test / populate in the application : 
 
 Build & start unit test with Nodejs, MongoDB Atlas, Mocha/Chai, Travis-CI and Coveralls : 
 
