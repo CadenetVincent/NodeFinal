@@ -35,9 +35,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var User = require("../model/auth.model");
 var school = require("../model/school.model");
 var Populate = require("./populate");
+var chai_1 = __importDefault(require("chai"));
+var my_app = require("../server");
 describe("/Populate", function () {
     before(function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -56,26 +62,26 @@ describe("/Populate", function () {
     });
     describe("Populate Database User & Schools", function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            it("Populate users", function () { return __awaiter(void 0, void 0, void 0, function () {
+            it("POPULATE / Should populate users", function () { return __awaiter(void 0, void 0, void 0, function () {
                 var res;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, User.insertMany(Populate[1])];
                         case 1:
                             res = _a.sent();
-                            console.log(res);
+                            chai_1.default.expect(res).to.be.an('array');
                             return [2 /*return*/];
                     }
                 });
             }); });
-            it("Populate schools", function () { return __awaiter(void 0, void 0, void 0, function () {
+            it("POPULATE / Should populate schools", function () { return __awaiter(void 0, void 0, void 0, function () {
                 var res;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, school.insertMany(Populate[0])];
                         case 1:
                             res = _a.sent();
-                            console.log(res);
+                            chai_1.default.expect(res).to.be.an('array');
                             return [2 /*return*/];
                     }
                 });
@@ -84,3 +90,4 @@ describe("/Populate", function () {
         });
     }); });
 });
+module.exports = my_app;

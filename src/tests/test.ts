@@ -1,7 +1,7 @@
 var User = require("../model/auth.model");
 var school = require("../model/school.model");
 const request = require("supertest");
-const expect = require("chai").expect;
+import expect from "chai";
 var my_app = require("../server");
 const users_test = require("./auth_test");
 const schools_test = require("./schools_test");
@@ -19,7 +19,7 @@ describe("/User", () => {
                 .post("/")
                 .send(users_test[2][0]);
 
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("AUTH ROUTE / should NOT add an existing user inscription", async () => {
@@ -27,7 +27,7 @@ describe("/User", () => {
                 .post("/")
                 .send(users_test[2][0]);
 
-            expect(res.status).to.equal(400);
+            expect.expect(res.status).to.equal(400);
         });
 
         it("AUTH ROUTE / should NOT add user 4 inscription (validator)", async () => {
@@ -35,7 +35,7 @@ describe("/User", () => {
                 .post("/")
                 .send(users_test[2][3]);
 
-            expect(res.status).to.equal(400);
+            expect.expect(res.status).to.equal(400);
         });
 
         it("AUTH ROUTE / should * connect user 1 (Admin) *", async () => {
@@ -43,7 +43,7 @@ describe("/User", () => {
                 .post("/")
                 .send(users_test[1][0]);
 
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("AUTH ROUTE / should NOT * connect user error (Not Found) *", async () => {
@@ -51,7 +51,7 @@ describe("/User", () => {
                 .post("/")
                 .send(users_test[1][3]);
 
-            expect(res.status).to.equal(404);
+            expect.expect(res.status).to.equal(404);
         });
     });
 
@@ -67,52 +67,52 @@ describe("/User", () => {
                 })
                 .send(users_test[2][2]);
 
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("AUTH ROUTE / should get menu page", async () => {
             const res = await agent.get("/menu");
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("AUTH ROUTE / should get register page", async () => {
             const res = await agent.get("/register");
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("AUTH ROUTE / should get login page", async () => {
             const res = await agent.get("/");
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("SCHOOL ROUTE / should get school table modify by current user", async () => {
             const res = await agent.get("/school/byuser");
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("SCHOOL ROUTE / should NOT get table with all schools (by admin)", async () => {
             const res = await agent.get("/school/byadmin");
-            expect(res.status).to.equal(400);
+            expect.expect(res.status).to.equal(400);
         });
 
         it("SCHOOL ROUTE / should get school form", async () => {
             const res = await agent.get("/school/form");
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("SCHOOL ROUTE / should get chart by user", async () => {
             const res = await agent.get("/school/chart/byuser");
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("SCHOOL ROUTE / should NOT get chart by admin (All schools chart)", async () => {
             const res = await agent.get("/school/chart/all");
-            expect(res.status).to.equal(400);
+            expect.expect(res.status).to.equal(400);
         });
 
         it("SCHOOL ROUTE / should add a school & redirect to the table page of school", async () => {
             const res = await agent.post("/school/add").send(schools_test[0]);
-            expect(res.status).to.equal(302);
+            expect.expect(res.status).to.equal(302);
         });
 
         it("SCHOOL ROUTE / should edit a school in the form page", async () => {
@@ -120,29 +120,29 @@ describe("/User", () => {
                 .find()
                 .where("name_school", schools_test[0].name_school);
             const res = await agent.get("/school/edit/" + code[0]._id);
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("SCHOOL ROUTE / should update a school & redirect to the table page of school", async () => {
             const res = await agent
                 .post("/school/update/" + code[0]._id)
                 .send(schools_test[1]);
-            expect(res.status).to.equal(302);
+            expect.expect(res.status).to.equal(302);
         });
 
         it("SCHOOL ROUTE / should delete a school & redirect to the table page of school", async () => {
             const res = await agent.delete("/school/delete/" + code[0]._id);
-            expect(res.status).to.equal(302);
+            expect.expect(res.status).to.equal(302);
         });
 
         it("USER ROUTE / should NOT get user by admin (because you're user)", async () => {
             const res = await agent.get("/user/byadmin");
-            expect(res.status).to.equal(404);
+            expect.expect(res.status).to.equal(404);
         });
 
         it("USER ROUTE / should NOT get the list of users (admin)", async () => {
             const res = await agent.get("/user/");
-            expect(res.status).to.equal(400);
+            expect.expect(res.status).to.equal(400);
         });
 
         it("USER ROUTE / should get the user page info by his name", async () => {
@@ -152,30 +152,30 @@ describe("/User", () => {
             );
 
             const res = await agent.get("/user/name/" + code[0].username);
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("USER ROUTE / should NOT get another user page info by his name", async () => {
             const res = await agent.get("/user/name/NoYourAccount");
-            expect(res.status).to.equal(404);
+            expect.expect(res.status).to.equal(404);
         });
 
         it("USER ROUTE / should edit a user 3 in the form", async () => {
             const res = await agent.get("/user/edit/" + code[0]._id);
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("USER ROUTE / should update a user 3 with user 2 & redirect to the user table", async () => {
             const res = await agent
                 .post("/user/update/" + code[0]._id)
                 .send(users_test[3][1]);
-            expect(res.status).to.equal(302);
+            expect.expect(res.status).to.equal(302);
         });
 
 
         it("USER ROUTE / should NOT delete a user (admin permission)", async () => {
             const res = await agent.delete("/user/delete/" + code[0]._id);
-            expect(res.status).to.equal(400);
+            expect.expect(res.status).to.equal(400);
         });
     });
 
@@ -188,22 +188,22 @@ describe("/User", () => {
                 .post("/")
                 .send(users_test[1][0]);
 
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("SCHOOL ROUTE / should get table with all schools (by admin)", async () => {
             const res = await agent.get("/school/byadmin");
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("SCHOOL ROUTE / should get chart by admin (All schools chart)", async () => {
             const res = await agent.get("/school/chart/all");
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("USER ROUTE / should get the list of users (admin)", async () => {
             const res = await agent.get("/user/");
-            expect(res.status).to.equal(200);
+            expect.expect(res.status).to.equal(200);
         });
 
         it("USER ROUTE / should delete a user (admin permission) & redirect to user table page", async () => {
@@ -214,7 +214,7 @@ describe("/User", () => {
             );
 
             const res = await agent.delete("/user/delete/" + code[0]._id);
-            expect(res.status).to.equal(302);
+            expect.expect(res.status).to.equal(302);
         });
     });
 

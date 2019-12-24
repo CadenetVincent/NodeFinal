@@ -189,7 +189,6 @@ router.get("/register", async function(req:any, res:any, next:any) {
 router.get("/menu", async function(req:any, res:any, next:any) {
     var user_id;
 
-    console.log(req.session.user)
 
     try{
         user_id = req.session.user._id;
@@ -288,7 +287,6 @@ router.post("/", async function(req:any, res:any, next:any) {
                      res.status(404).send("SALT error");
                     }
                     else {
-                        console.log("win")
                         newUser.password = hash;
                         req.session.user = newUser;
 
@@ -333,8 +331,9 @@ router.post("/", async function(req:any, res:any, next:any) {
         var password = req.body.logpassword;
 
         User.findOne({ email }).then((user:any) => {
+            var error_email = '';
             if (!user) {
-                errors.email = "User not found";
+                error_email = "User not found";
                 return res.status(404).render("form", {
                     title: "Login",
                     action: "/",
@@ -344,7 +343,7 @@ router.post("/", async function(req:any, res:any, next:any) {
                             prettyname: "Email",
                             type: "text",
                             property: "required",
-                            error: errors.email
+                            error: error_email
                         },
                         {
                             name: "logpassword",
@@ -358,6 +357,7 @@ router.post("/", async function(req:any, res:any, next:any) {
             }
 
             bcrypt.compare(password, user.password).then((isMatch:any) => {
+                var errors_password = "";
                 if (isMatch) {
                     const payload = {
                         id: user._id,
@@ -374,7 +374,7 @@ router.post("/", async function(req:any, res:any, next:any) {
                         nbr_school: 0
                     });
                 } else {
-                    errors.password = "Incorrect Password";
+                    errors_password = "Incorrect Password";
                     return res.status(404).render("form", {
                         title: "Login",
                         action: "/",
@@ -391,7 +391,7 @@ router.post("/", async function(req:any, res:any, next:any) {
                                 prettyname: "Password",
                                 type: "password",
                                 property: "required",
-                                error: errors.password
+                                error: errors_password
                             }
                         ]
                     });

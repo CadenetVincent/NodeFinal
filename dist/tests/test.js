@@ -35,10 +35,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var User = require("../model/auth.model");
 var school = require("../model/school.model");
 var request = require("supertest");
-var expect = require("chai").expect;
+var chai_1 = __importDefault(require("chai"));
 var my_app = require("../server");
 var users_test = require("./auth_test");
 var schools_test = require("./schools_test");
@@ -65,7 +69,7 @@ describe("/User", function () {
                             .send(users_test[2][0])];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -79,7 +83,7 @@ describe("/User", function () {
                             .send(users_test[2][0])];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(400);
+                        chai_1.default.expect(res.status).to.equal(400);
                         return [2 /*return*/];
                 }
             });
@@ -93,7 +97,7 @@ describe("/User", function () {
                             .send(users_test[2][3])];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(400);
+                        chai_1.default.expect(res.status).to.equal(400);
                         return [2 /*return*/];
                 }
             });
@@ -107,7 +111,7 @@ describe("/User", function () {
                             .send(users_test[1][0])];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -121,7 +125,7 @@ describe("/User", function () {
                             .send(users_test[1][3])];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(404);
+                        chai_1.default.expect(res.status).to.equal(404);
                         return [2 /*return*/];
                 }
             });
@@ -146,7 +150,7 @@ describe("/User", function () {
                             .send(users_test[2][2])];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -158,7 +162,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/menu")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -170,7 +174,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/register")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -182,7 +186,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -194,7 +198,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/school/byuser")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -206,7 +210,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/school/byadmin")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(400);
+                        chai_1.default.expect(res.status).to.equal(400);
                         return [2 /*return*/];
                 }
             });
@@ -218,7 +222,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/school/form")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -230,7 +234,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/school/chart/byuser")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -242,7 +246,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/school/chart/all")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(400);
+                        chai_1.default.expect(res.status).to.equal(400);
                         return [2 /*return*/];
                 }
             });
@@ -254,7 +258,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.post("/school/add").send(schools_test[0])];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(302);
+                        chai_1.default.expect(res.status).to.equal(302);
                         return [2 /*return*/];
                 }
             });
@@ -271,7 +275,7 @@ describe("/User", function () {
                         return [4 /*yield*/, agent.get("/school/edit/" + code[0]._id)];
                     case 2:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -285,7 +289,7 @@ describe("/User", function () {
                             .send(schools_test[1])];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(302);
+                        chai_1.default.expect(res.status).to.equal(302);
                         return [2 /*return*/];
                 }
             });
@@ -297,7 +301,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.delete("/school/delete/" + code[0]._id)];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(302);
+                        chai_1.default.expect(res.status).to.equal(302);
                         return [2 /*return*/];
                 }
             });
@@ -309,7 +313,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/user/byadmin")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(404);
+                        chai_1.default.expect(res.status).to.equal(404);
                         return [2 /*return*/];
                 }
             });
@@ -321,7 +325,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/user/")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(400);
+                        chai_1.default.expect(res.status).to.equal(400);
                         return [2 /*return*/];
                 }
             });
@@ -336,7 +340,7 @@ describe("/User", function () {
                         return [4 /*yield*/, agent.get("/user/name/" + code[0].username)];
                     case 2:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -348,7 +352,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/user/name/NoYourAccount")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(404);
+                        chai_1.default.expect(res.status).to.equal(404);
                         return [2 /*return*/];
                 }
             });
@@ -360,7 +364,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/user/edit/" + code[0]._id)];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -374,7 +378,7 @@ describe("/User", function () {
                             .send(users_test[3][1])];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(302);
+                        chai_1.default.expect(res.status).to.equal(302);
                         return [2 /*return*/];
                 }
             });
@@ -386,7 +390,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.delete("/user/delete/" + code[0]._id)];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(400);
+                        chai_1.default.expect(res.status).to.equal(400);
                         return [2 /*return*/];
                 }
             });
@@ -404,7 +408,7 @@ describe("/User", function () {
                             .send(users_test[1][0])];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -416,7 +420,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/school/byadmin")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -428,7 +432,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/school/chart/all")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -440,7 +444,7 @@ describe("/User", function () {
                     case 0: return [4 /*yield*/, agent.get("/user/")];
                     case 1:
                         res = _a.sent();
-                        expect(res.status).to.equal(200);
+                        chai_1.default.expect(res.status).to.equal(200);
                         return [2 /*return*/];
                 }
             });
@@ -455,7 +459,7 @@ describe("/User", function () {
                         return [4 /*yield*/, agent.delete("/user/delete/" + code[0]._id)];
                     case 2:
                         res = _a.sent();
-                        expect(res.status).to.equal(302);
+                        chai_1.default.expect(res.status).to.equal(302);
                         return [2 /*return*/];
                 }
             });

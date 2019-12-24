@@ -1,6 +1,8 @@
 var User = require("../model/auth.model");
 var school = require("../model/school.model");
 const Populate = require("./populate")
+import expect from "chai";
+var my_app = require("../server");
 
 describe("/Populate", () => {
 
@@ -11,20 +13,24 @@ describe("/Populate", () => {
 
     describe("Populate Database User & Schools", async () => {
 
-        it("Populate users", async () => {
+        it("POPULATE / Should populate users", async () => {
 
         const res = await User.insertMany(Populate[1]);
-        console.log(res)
+         
+        expect.expect(res).to.be.an('array');
 
         });
 
-        it("Populate schools", async () => {
+        it("POPULATE / Should populate schools", async () => {
 
         const res = await school.insertMany(Populate[0]);
-        console.log(res)
+       
+        expect.expect(res).to.be.an('array')
 
         });
 
     });
 
 });
+
+module.exports = my_app;

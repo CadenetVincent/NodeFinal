@@ -249,7 +249,6 @@ router.get("/menu", function (req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
         var user_id;
         return __generator(this, function (_a) {
-            console.log(req.session.user);
             try {
                 user_id = req.session.user._id;
             }
@@ -304,7 +303,7 @@ router.get("/menu", function (req, res, next) {
 // ADD A USER IN THE DATABASE
 router.post("/", function (req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
-        var err, _a, errors, isValid, _b, errors_1, isValid, email, password, err;
+        var err, _a, errors, isValid, _b, errors, isValid, email, password, err;
         return __generator(this, function (_c) {
             if (req.body.password !== req.body.passwordConf) {
                 err = new Error("Passwords do not match.");
@@ -346,7 +345,6 @@ router.post("/", function (req, res, next) {
                                 res.status(404).send("SALT error");
                             }
                             else {
-                                console.log("win");
                                 newUser.password = hash;
                                 req.session.user = newUser;
                                 return newUser.save().then(function (user) {
@@ -362,7 +360,7 @@ router.post("/", function (req, res, next) {
                 });
             }
             else if (req.body.logemail && req.body.logpassword) {
-                _b = validateLoginInput(req.body), errors_1 = _b.errors, isValid = _b.isValid;
+                _b = validateLoginInput(req.body), errors = _b.errors, isValid = _b.isValid;
                 if (!isValid) {
                     return [2 /*return*/, res.status(404).render("form", {
                             title: "Login",
@@ -373,14 +371,14 @@ router.post("/", function (req, res, next) {
                                     prettyname: "Email",
                                     type: "text",
                                     property: "required",
-                                    error: errors_1.email
+                                    error: errors.email
                                 },
                                 {
                                     name: "logpassword",
                                     prettyname: "Password",
                                     type: "password",
                                     property: "required",
-                                    error: errors_1.password
+                                    error: errors.password
                                 }
                             ]
                         })];
@@ -388,8 +386,9 @@ router.post("/", function (req, res, next) {
                 email = req.body.logemail;
                 password = req.body.logpassword;
                 User.findOne({ email: email }).then(function (user) {
+                    var error_email = '';
                     if (!user) {
-                        errors_1.email = "User not found";
+                        error_email = "User not found";
                         return res.status(404).render("form", {
                             title: "Login",
                             action: "/",
@@ -399,7 +398,7 @@ router.post("/", function (req, res, next) {
                                     prettyname: "Email",
                                     type: "text",
                                     property: "required",
-                                    error: errors_1.email
+                                    error: error_email
                                 },
                                 {
                                     name: "logpassword",
@@ -412,6 +411,7 @@ router.post("/", function (req, res, next) {
                         });
                     }
                     bcrypt.compare(password, user.password).then(function (isMatch) {
+                        var errors_password = "";
                         if (isMatch) {
                             var payload = {
                                 id: user._id,
@@ -427,7 +427,7 @@ router.post("/", function (req, res, next) {
                             });
                         }
                         else {
-                            errors_1.password = "Incorrect Password";
+                            errors_password = "Incorrect Password";
                             return res.status(404).render("form", {
                                 title: "Login",
                                 action: "/",
@@ -444,7 +444,7 @@ router.post("/", function (req, res, next) {
                                         prettyname: "Password",
                                         type: "password",
                                         property: "required",
-                                        error: errors_1.password
+                                        error: errors_password
                                     }
                                 ]
                             });
