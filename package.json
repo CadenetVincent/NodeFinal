@@ -9,7 +9,7 @@
     "start_js": "nodemon ./dist/server.js",
     "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./dist/tests/test.js --timeout 5000 --exit",
     "populate": "./node_modules/.bin/mocha ./dist/tests/gopopulate.js --timeout 5000",
-    "build": "./node_modules/.bin/tsc -p tsconfig.json",
+    "build_app": "./node_modules/.bin/tsc -p tsconfig.json",
     "dev": "./node_modules/.bin/nodemon"
 
   },
