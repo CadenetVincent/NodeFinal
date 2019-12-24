@@ -25,7 +25,7 @@ ECE Project : DevObs & Nodejs 2019 December
 
 ### What we use ? 
 
-- [x] `Language` : NodeJS, EJS, express, Typescript, MongoDB (NoSQL), Linux.
+- [x] `Language` : NodeJS, EJS, express, Typescript, MongoDB (NoSQL), Linux,...
 - [x] `Database` : MongoDB Atlas.
 - [x] `CI/CD` : Travis-CI, Coveralls. 
 - [x] `Unit Test` : Mocha/Chai, Nodejs. 
@@ -85,25 +85,25 @@ Docker-compose :
 
     $ sudo docker-compose up --build
 
-NPM test : 
+Npm test : 
 
     $ npm run test
 
-NPM populate the DATABASE :
+Npm populate the DATABASE :
 
     $ npm run populate 
 
 ### Run & build the Node Application : 
 
-Npm start (Node / Nodejs): 
+Npm start (with Node / Nodejs): 
 
     $ npm run start
 
-Npm start (ts-node / Typescript):
+Npm start (with ts-node / Typescript):
 
     $ npm run start_ts
 
-Npm start (nodemon / Nodejs):
+Npm start (with nodemon / Nodejs):
 
     $ npm run start_js
 
@@ -111,11 +111,11 @@ Dev start :
 
     $ npm run dev 
 
-Build Typescript :
+Build with Typescript :
 
     $ npm run build_app
 
-Heroku : 
+Heroku deployment : 
 
 https://finalnodecadenet.herokuapp.com/
 
@@ -132,7 +132,7 @@ https://finalnodecadenet.herokuapp.com/
 
 > Licensed under the [MIT License](LICENSE)
 
-# server.js (main of the project) #
+# server.ts (main of the project) #
 
 ```typescript
 const express = require('express');
@@ -143,16 +143,16 @@ const path = require('path');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
-const authRoute = require('./route/auth.route.js');
-const userRoute = require('./route/user.route.js');
-const schoolRoute = require('./route/school.route.js');
+const authRoute = require('./route/auth.route');
+const userRoute = require('./route/user.route');
+const schoolRoute = require('./route/school.route');
 
 var port =  process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb+srv://User:User@cluster0-k3dxs.gcp.mongodb.net/ececadenetfritel", { useNewUrlParser: true }).then(
   () => {console.log('Database is connected') },
-  err => { console.log('Can not connect to the database'+ err)}
+  (err:any) => { console.log('Can not connect to the database'+ err)}
 );
 
 var db = mongoose.connection;
@@ -164,7 +164,7 @@ mongoose.set('useFindAndModify', false);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(session({
   secret: 'secret_Cadenet_Fritel',
@@ -185,6 +185,7 @@ app.listen(port, function () {
 });
 
 module.exports = app;
+
 
 ```
 
