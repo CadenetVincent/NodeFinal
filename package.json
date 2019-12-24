@@ -4,7 +4,7 @@
   "description": "School project DevObs & Nodejs",
   "main": "server.js",
   "scripts": {
-    "start": "node ./src/server.ts",
+    "start": "node ./dist/server.js",
     "start_ts": "nodemon ./src/server.ts",
     "start_js": "nodemon ./dist/server.js",
     "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./dist/tests/test.js --timeout 5000 --exit",
