@@ -1,13 +1,13 @@
 // school.route.js
 
-const express = require("express");
+import * as express from "express";
 const schoolRoutes = express.Router();
 let school = require("../model/school.model");
 let User = require("../model/auth.model");
 
 // GET FORM SCHOOL TO ADD ONE
 
-schoolRoutes.get("/form", async function(req, res) {
+schoolRoutes.get("/form", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -24,7 +24,7 @@ schoolRoutes.get("/form", async function(req, res) {
 
     var JSONCountry = require("../model/states.json");
 
-    JSONCountry = JSONCountry.map(function(state) {
+    JSONCountry = JSONCountry.map(function(state:any) {
         return state.name.toUpperCase();
     });
 
@@ -103,7 +103,7 @@ schoolRoutes.get("/form", async function(req, res) {
 
 // GET CHART FROM ALL SCHOOLS
 
-schoolRoutes.get("/chart/all", async function(req, res) {
+schoolRoutes.get("/chart/all", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -123,7 +123,7 @@ schoolRoutes.get("/chart/all", async function(req, res) {
         actual_user.status == "admin" &&
         actual_user._id != ""
     ) {
-        school.find(function(err, school) {
+        school.find(function(err:any, school:any) {
             if (err) {
                 res.status(404).send("Not found");
             } else {
@@ -132,7 +132,7 @@ schoolRoutes.get("/chart/all", async function(req, res) {
                 var data_set = [];
                 var names = [];
 
-                const propComparator = propName => (a, b) =>
+                const propComparator = (propName:any) => (a:any, b:any) =>
                     a[propName] == b[propName]
                         ? 0
                         : a[propName] < b[propName]
@@ -200,7 +200,7 @@ schoolRoutes.get("/chart/all", async function(req, res) {
 
 // GET CHART BY CURRENT USER
 
-schoolRoutes.get("/chart/byuser", async function(req, res) {
+schoolRoutes.get("/chart/byuser", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -222,7 +222,7 @@ schoolRoutes.get("/chart/byuser", async function(req, res) {
         school
             .find()
             .where("user_id", user_id)
-            .exec(function(err, school) {
+            .exec(function(err:any, school:any) {
                 if (err) {
                     res.status(404).send("Not found");
                 } else {
@@ -231,7 +231,7 @@ schoolRoutes.get("/chart/byuser", async function(req, res) {
                     var data_set = [];
                     var names = [];
 
-                    const propComparator = propName => (a, b) =>
+                    const propComparator = (propName:any) => (a:any, b:any) =>
                         a[propName] == b[propName]
                             ? 0
                             : a[propName] < b[propName]
@@ -299,7 +299,7 @@ schoolRoutes.get("/chart/byuser", async function(req, res) {
 
 // GET TABLE OF SCHOOL BY CURRENT USER
 
-schoolRoutes.get("/byuser", async function(req, res) {
+schoolRoutes.get("/byuser", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -321,7 +321,7 @@ schoolRoutes.get("/byuser", async function(req, res) {
         school
             .find()
             .where("user_id", user_id)
-            .exec(function(err, school) {
+            .exec(function(err:any, school:any) {
                 if (!school) res.status(404).send("data is not found");
 
                 res.status(200).render("tables", {
@@ -349,7 +349,7 @@ schoolRoutes.get("/byuser", async function(req, res) {
 });
 
 // ADD SCHOOL TO THE DATABASE
-schoolRoutes.post("/add", async function(req, res) {
+schoolRoutes.post("/add", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -373,10 +373,10 @@ schoolRoutes.post("/add", async function(req, res) {
 
         school_add
             .save()
-            .then(school => {
+            .then((school:any) => {
                 res.status(200).redirect("/school/byuser");
             })
-            .catch(err => {
+            .catch((err:any) => {
                 res.status(400).send("unable to save to database");
             });
     } else {
@@ -384,7 +384,7 @@ schoolRoutes.post("/add", async function(req, res) {
     }
 });
 
-schoolRoutes.get("/byadmin", async function(req, res) {
+schoolRoutes.get("/byadmin", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -406,9 +406,9 @@ schoolRoutes.get("/byadmin", async function(req, res) {
     ) {
         let id = user_id;
 
-        User.findById(id, function(err, user) {
+        User.findById(id, function(err:any, user:any) {
             if (user.status == "admin") {
-                school.find(function(err, school) {
+                school.find(function(err:any, school:any) {
                     if (err) {
                         res.status(404).send("Data not found");
                     } else {
@@ -442,7 +442,7 @@ schoolRoutes.get("/byadmin", async function(req, res) {
 });
 
 // UPDATE ONE SCHOOL IN THE FORM
-schoolRoutes.get("/edit/:id", async function(req, res) {
+schoolRoutes.get("/edit/:id", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -459,7 +459,7 @@ schoolRoutes.get("/edit/:id", async function(req, res) {
 
     var JSONCountry = require("../model/states.json");
 
-    JSONCountry = JSONCountry.map(function(state) {
+    JSONCountry = JSONCountry.map(function(state:any) {
         return state.name.toUpperCase();
     });
 
@@ -468,7 +468,7 @@ schoolRoutes.get("/edit/:id", async function(req, res) {
         actual_user._id != ""
     ) {
         let id = req.params.id;
-        school.findById(id, function(err, school) {
+        school.findById(id, function(err:any, school:any) {
             res.status(200).render("form", {
                 title: "Update school",
                 action: "/school/update/" + id,
@@ -547,7 +547,7 @@ schoolRoutes.get("/edit/:id", async function(req, res) {
 });
 
 // UPDATE THE SCHOOL IN THE DATABASE
-schoolRoutes.post("/update/:id", async function(req, res) {
+schoolRoutes.post("/update/:id", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -566,7 +566,7 @@ schoolRoutes.post("/update/:id", async function(req, res) {
         actual_user._id.toString() == user_id.toString() &&
         actual_user._id != ""
     ) {
-        school.findById(req.params.id, function(err, school) {
+        school.findById(req.params.id, function(err:any, school:any) {
             if (!school) res.status(404).send("data is not found");
             else {
                 school.name_school = req.body.name_school;
@@ -581,10 +581,10 @@ schoolRoutes.post("/update/:id", async function(req, res) {
 
                 school
                     .save()
-                    .then(school => {
+                    .then((school:any) => {
                         res.status(200).redirect("/school/byuser");
                     })
-                    .catch(err => {
+                    .catch((err:any) => {
                         res.status(400).send("unable to update the database");
                     });
             }
@@ -595,7 +595,7 @@ schoolRoutes.post("/update/:id", async function(req, res) {
 });
 
 // DELETE A SCHOOL FROM DATABASE
-schoolRoutes.route("/delete/:id").delete(async function(req, res) {
+schoolRoutes.route("/delete/:id").delete(async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -615,8 +615,8 @@ schoolRoutes.route("/delete/:id").delete(async function(req, res) {
         actual_user._id != ""
     ) {
         school.findByIdAndRemove({ _id: req.params.id }, async function(
-            err,
-            school
+            err:any,
+            school:any
         ) {
             if (err) {
                 res.status(404).json(err);

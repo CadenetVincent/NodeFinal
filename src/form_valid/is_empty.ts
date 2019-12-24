@@ -1,4 +1,4 @@
-const isEmpty = (value) => {
+const isEmpty = (value:any) => {
     return (
         value === undefined ||
         value === null ||

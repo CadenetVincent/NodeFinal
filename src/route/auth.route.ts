@@ -2,12 +2,11 @@ const validateRegisterInput = require("../form_valid/register");
 const validateLoginInput = require("../form_valid/login");
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
-var express = require("express");
+import * as express from "express";
 var router = express.Router();
-var User = require("../model/auth.model.js");
-var school = require("../model/school.model.js");
+var User = require("../model/auth.model");
 
-router.get("/", async function(req, res) {
+router.get("/", async function(req:any, res:any, next:any) {
     var isuser = "";
     try{
         isuser = req.session.user._id;
@@ -16,7 +15,7 @@ router.get("/", async function(req, res) {
     }
 
     if (isuser !== "" && isuser !== undefined) {
-        User.findById(isuser).exec(function(error, user) {
+        User.findById(isuser).exec(function(error:any, user:any) {
             if (error) {
                 return next(error);
             } else {
@@ -74,7 +73,7 @@ router.get("/", async function(req, res) {
     }
 });
 
-router.get("/register", async function(req, res) {
+router.get("/register", async function(req:any, res:any, next:any) {
     var isuser = "";
     try{
         isuser = req.session.user._id;
@@ -83,7 +82,7 @@ router.get("/register", async function(req, res) {
     }
 
     if (isuser !== "") {
-        User.findById(isuser).exec(function(error, user) {
+        User.findById(isuser).exec(function(error:any, user:any) {
             if (error) {
                 return next(error);
             } else {
@@ -187,16 +186,16 @@ router.get("/register", async function(req, res) {
 
 // GET THE MENU OF THE APPLICATION
 
-router.get("/menu", async function(req, res) {
-    var user_id;
+router.get("/menu", async function(req:any, res:any, next:any) {
+    var user_id:String;
 
     try{
         user_id = req.session.user._id;
     }catch(e){
-        isuser = "";
+        user_id = "";
     }
 
-    User.findById(user_id).exec(async function(error, user) {
+    User.findById(user_id).exec(async function(error:any, user:any) {
         if (error) {
             return next(error);
         } else {
@@ -222,8 +221,6 @@ router.get("/menu", async function(req, res) {
                     ]
                 });
             } else {
-                querie_2 = school.find().where("user_id", user_id);
-                nbr_school_user = await querie_2.exec();
 
                 return res.render("acceuil", {
                     success: true,
@@ -237,9 +234,9 @@ router.get("/menu", async function(req, res) {
 
 // ADD A USER IN THE DATABASE
 
-router.post("/", async function(req, res, next) {
+router.post("/", async function(req:any, res:any, next:any) {
     if (req.body.password !== req.body.passwordConf) {
-        var err = new Error("Passwords do not match.");
+        var err:any = new Error("Passwords do not match.");
         err.status = 400;
         res.send("passwords dont match");
         return next(err);
@@ -259,7 +256,7 @@ router.post("/", async function(req, res, next) {
 
         User.findOne({
             email: req.body.email
-        }).then(user => {
+        }).then((user:any) => {
             if (user) {
                 return res.status(400).json({
                     email: "Email already exists"
@@ -279,13 +276,13 @@ router.post("/", async function(req, res, next) {
                     avatar
                 });
 
-                bcrypt.hash(newUser.password, 10, (err, hash) => {
+                bcrypt.hash(newUser.password, 10, (err:any, hash:any) => {
                     if (err) res.status(404).send("SALT error");
                     else {
                         newUser.password = hash;
                         req.session.user = newUser;
 
-                        newUser.save().then(user => {
+                        newUser.save().then((user:any) => {
                             res.status(200).render("acceuil", {
                                 success: true,
                                 user: newUser,
@@ -325,7 +322,7 @@ router.post("/", async function(req, res, next) {
         var email = req.body.logemail;
         var password = req.body.logpassword;
 
-        User.findOne({ email }).then(user => {
+        User.findOne({ email }).then((user:any) => {
             if (!user) {
                 errors.email = "User not found";
                 return res.status(404).render("form", {
@@ -350,7 +347,7 @@ router.post("/", async function(req, res, next) {
                 });
             }
 
-            bcrypt.compare(password, user.password).then(isMatch => {
+            bcrypt.compare(password, user.password).then((isMatch:any) => {
                 if (isMatch) {
                     const payload = {
                         id: user._id,
@@ -392,7 +389,7 @@ router.post("/", async function(req, res, next) {
             });
         });
     } else {
-        var err = new Error("All fields required.");
+        var err:any = new Error("All fields required.");
         err.status = 400;
         return next(err);
     }
@@ -400,9 +397,9 @@ router.post("/", async function(req, res, next) {
 
 // GET THE LOGOUT
 
-router.get("/logout", function(req, res, next) {
+router.get("/logout", function(req:any, res:any, next) {
     if (req.session) {
-        req.session.destroy(function(err) {
+        req.session.destroy(function(err:any) {
             if (err) {
                 return next(err);
             } else {

@@ -1,12 +1,12 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
+import * as express from "express";
+import * as bcrypt from "bcryptjs";
 const userRoutes = express.Router();
-let User = require("../model/auth.model");
-const validateRegisterInput = require("../form_valid/register");
+var User = require("../model/auth.model");
+var validateRegisterInput = require("../form_valid/register");
 
 /* GET ALL USERS */
 
-userRoutes.get("/", async function(req, res) {
+userRoutes.get("/", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -26,7 +26,7 @@ userRoutes.get("/", async function(req, res) {
         actual_user._id != "" &&
         actual_user.status == "admin"
     ) {
-        User.find(function(err, user) {
+        User.find(function(err:any, user:any) {
             if (err) {
                 res.status(404).send("Not found");
             } else {
@@ -40,7 +40,7 @@ userRoutes.get("/", async function(req, res) {
 
 /* GET BY ADMIN */
 
-userRoutes.get("/byadmin", async function(req, res) {
+userRoutes.get("/byadmin", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -61,9 +61,9 @@ userRoutes.get("/byadmin", async function(req, res) {
     ) {
         let id = req.session.user._id;
 
-        User.findById(id, function(err, user) {
+        User.findById(id, function(err:any, user:any) {
             if (user.status == "admin") {
-                User.find(function(err, users) {
+                User.find(function(err:any, users:any) {
                     if (err) {
                         res.status(404).send("Not found");
                     } else {
@@ -95,7 +95,7 @@ userRoutes.get("/byadmin", async function(req, res) {
 
 /* FORM UPDATE USER */
 
-userRoutes.get("/edit/:id", async function(req, res) {
+userRoutes.get("/edit/:id", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -116,9 +116,9 @@ userRoutes.get("/edit/:id", async function(req, res) {
     ) {
         let id = req.params.id;
 
-        User.findById(req.session.user._id, function(err, actual_user) {
+        User.findById(req.session.user._id, function(err:any, actual_user:any) {
             if (id == actual_user._id || actual_user.status == "admin") {
-                User.findById(id, function(err, user) {
+                User.findById(id, function(err:any, user:any) {
                     res.render("form", {
                         title: "Update user",
                         user: req.session.user,
@@ -177,7 +177,7 @@ userRoutes.get("/edit/:id", async function(req, res) {
 
 /* GET USER BY NAME */
 
-userRoutes.get("/name/:name", async function(req, res) {
+userRoutes.get("/name/:name", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -242,7 +242,7 @@ userRoutes.get("/name/:name", async function(req, res) {
 
 /* UPDATE ONE USER */
 
-userRoutes.post("/update/:id", async function(req, res) {
+userRoutes.post("/update/:id", async function(req:any, res:any) {
     var user_id;
     var querie_2;
     var actual_user = { _id: "", status: "" };
@@ -261,7 +261,7 @@ userRoutes.post("/update/:id", async function(req, res) {
         actual_user._id.toString() == user_id.toString() &&
         actual_user._id != ""
     ) {
-        User.findById(req.params.id, function(err, user) {
+        User.findById(req.params.id, function(err:any, user:any) {
             if (!user) res.status(404).send("data is not found");
             else {
                 const { errors, isValid } = validateRegisterInput(req.body);
@@ -275,14 +275,14 @@ userRoutes.post("/update/:id", async function(req, res) {
                 user.password = req.body.password;
                 user.status = req.body.status;
 
-                bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.genSalt(10, (err:any, salt:any) => {
                     if (err) res.status(404).send("SALT error");
                     else {
-                        bcrypt.hash(user.password, salt, (err, hash) => {
+                        bcrypt.hash(user.password, salt, (err:any, hash:any) => {
                             if (err) res.status(404).send("Hash error");
                             else {
                                 user.password = hash;
-                                user.save().then(user => {
+                                user.save().then((user:any) => {
                                     if (user.status == "user") {
                                         res.status(200).redirect(
                                             "/user/name/" + user.username
@@ -306,10 +306,10 @@ userRoutes.post("/update/:id", async function(req, res) {
 
 // DELETE ONE USER
 
-userRoutes.route("/delete/:id").delete(async function(req, res) {
+userRoutes.route("/delete/:id").delete(async function(req:any, res:any) {
     var user_id;
     var querie_2;
-    var actual_user = { _id: "", status: "" };
+    var actual_user = { _id: "", status: "", username : "" };
 
     try{
         user_id = req.session.user._id;
@@ -326,7 +326,7 @@ userRoutes.route("/delete/:id").delete(async function(req, res) {
         actual_user._id != "" &&
         actual_user.status == "admin"
     ) {
-        User.findByIdAndRemove({ _id: req.params.id }, function(err, user) {
+        User.findByIdAndRemove({ _id: req.params.id }, function(err:any, user:any) {
             if (err) {
                 res.status(404).json(err);
             } else {

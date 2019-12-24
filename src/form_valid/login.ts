@@ -1,11 +1,11 @@
 
 const Validator = require('validator');
-const isEmpty = require('./is_empty');
+const Empty = require('./is_empty');
 
-module.exports = function validateLoginInput(data) {
-    let errors = {};
-    data.logemail = !isEmpty(data.logemail) ? data.logemail : '';
-    data.logpassword = !isEmpty(data.logpassword) ? data.logpassword : '';
+module.exports = function validateLoginInput(data:any) {
+    let errors = {logemail : "", logpassword:""};
+    data.logemail = !Empty(data.logemail) ? data.logemail : '';
+    data.logpassword = !Empty(data.logpassword) ? data.logpassword : '';
 
     if(!Validator.isEmail(data.logemail)) {
         errors.logemail = 'Email is invalid';
@@ -25,6 +25,6 @@ module.exports = function validateLoginInput(data) {
 
     return {
         errors,
-        isValid: isEmpty(errors)
+        isValid: Empty(errors)
     }
 }

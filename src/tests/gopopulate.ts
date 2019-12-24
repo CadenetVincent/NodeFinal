@@ -1,9 +1,6 @@
-var User = require("../model/auth.model.js");
-var school = require("../model/school.model.js");
-const request = require("supertest");
-const expect = require("chai").expect;
-const app = require("../server");
-const Populate = require("./populate.js")
+var User = require("../model/auth.model");
+var school = require("../model/school.model");
+const Populate = require("./populate")
 
 describe("/Populate", () => {
 

@@ -1,15 +1,15 @@
 // register.js
 
-const Validator = require('validator');
-const isEmpty = require('./is_empty');
+import Validator from 'validator';
+const Empty = require('./is_empty');
 
-module.exports = function validateRegisterInput(data) {
-    let errors = {};
+module.exports = function validateRegisterInput(data:any) {
+    let errors = {username : "", email : "", password : "",passwordConf : ""};
     
-    data.username = !isEmpty(data.username) ? data.username : '';
-    data.email = !isEmpty(data.email) ? data.email : '';
-    data.password = !isEmpty(data.password) ? data.password : '';
-    data.passwordConf = !isEmpty(data.passwordConf) ? data.passwordConf : '';
+    data.username = !Empty(data.username) ? data.username : '';
+    data.email = !Empty(data.email) ? data.email : '';
+    data.password = !Empty(data.password) ? data.password : '';
+    data.passwordConf = !Empty(data.passwordConf) ? data.passwordConf : '';
 
     if(!Validator.isLength(data.username, { min: 2, max: 30 })) {
         errors.username = 'User name must be between 2 to 30 chars';
@@ -49,6 +49,6 @@ module.exports = function validateRegisterInput(data) {
 
     return {
         errors,
-        isValid: isEmpty(errors)
+        isValid: Empty(errors)
     }
 }

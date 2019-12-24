@@ -1,4 +1,4 @@
-const user_test = [
+const the_user_test = [
     {
         username: "User1_test",
         email: "user_test1@test.com",
@@ -19,4 +19,4 @@ const user_test = [
     }
 ];
 
-module.exports = {data : user_test};
+module.exports = {data : the_user_test};

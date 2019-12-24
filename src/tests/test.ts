@@ -1,10 +1,10 @@
-var User = require("../model/auth.model.js");
-var school = require("../model/school.model.js");
+var User = require("../model/auth.model");
+var school = require("../model/school.model");
 const request = require("supertest");
 const expect = require("chai").expect;
-const app = require("../server");
-const users_test = require("./auth_test.js");
-const schools_test = require("./schools_test.js");
+const my_app = require("../server");
+const users_test = require("./auth_test");
+const schools_test = require("./schools_test");
 
 describe("/User", () => {
 
@@ -15,7 +15,7 @@ describe("/User", () => {
     describe("USE CASE 1) register & connect user", () => {
 
         it("AUTH ROUTE / should add user 1 inscription", async () => {
-            const res = await request(app)
+            const res = await request(my_app)
                 .post("/")
                 .send(users_test[2][0]);
 
@@ -23,7 +23,7 @@ describe("/User", () => {
         });
 
         it("AUTH ROUTE / should NOT add an existing user inscription", async () => {
-            const res = await request(app)
+            const res = await request(my_app)
                 .post("/")
                 .send(users_test[2][0]);
 
@@ -31,7 +31,7 @@ describe("/User", () => {
         });
 
         it("AUTH ROUTE / should NOT add user 4 inscription (validator)", async () => {
-            const res = await request(app)
+            const res = await request(my_app)
                 .post("/")
                 .send(users_test[2][3]);
 
@@ -39,7 +39,7 @@ describe("/User", () => {
         });
 
         it("AUTH ROUTE / should * connect user 1 (Admin) *", async () => {
-            const res = await request(app)
+            const res = await request(my_app)
                 .post("/")
                 .send(users_test[1][0]);
 
@@ -47,7 +47,7 @@ describe("/User", () => {
         });
 
         it("AUTH ROUTE / should NOT * connect user error (Not Found) *", async () => {
-            const res = await request(app)
+            const res = await request(my_app)
                 .post("/")
                 .send(users_test[1][3]);
 
@@ -57,12 +57,12 @@ describe("/User", () => {
 
 
     describe("USE CASE 2) USER RIGHTS", () => {
-        let agent = request.agent(app);
-        var code;
+        let agent = request.agent(my_app);
+        var code:any;
 
         it("AUTH ROUTE / should connect user 3 (User) for access page ", async () => {
             const res = await agent
-                .post("/", async function(req, res) {
+                .post("/", async function(req:any, res:any) {
                     req.session.user = new User(users_test[2][2]);
                 })
                 .send(users_test[2][2]);
@@ -71,17 +71,17 @@ describe("/User", () => {
         });
 
         it("AUTH ROUTE / should get menu page", async () => {
-            const res = await request(app).get("/menu");
+            const res = await request(my_app).get("/menu");
             expect(res.status).to.equal(200);
         });
 
         it("AUTH ROUTE / should get register page", async () => {
-            const res = await request(app).get("/register");
+            const res = await request(my_app).get("/register");
             expect(res.status).to.equal(200);
         });
 
         it("AUTH ROUTE / should get login page", async () => {
-            const res = await request(app).get("/");
+            const res = await request(my_app).get("/");
             expect(res.status).to.equal(200);
         });
 
@@ -180,7 +180,7 @@ describe("/User", () => {
     });
 
     describe("USE CASE 3) ADMIN RIGHTS", () => {
-        let agent = request.agent(app);
+        let agent = request.agent(my_app);
         var code;
 
         it("AUTH ROUTE / should connect user 1 (ADMIN) for access page ", async () => {
