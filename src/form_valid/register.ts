@@ -3,8 +3,13 @@
 import Validator from 'validator';
 const Empty = require('./is_empty');
 
-module.exports = function validateRegisterInput(data:any) {
-    var errors:any = "";
+module.exports = function validateRegisterInput(data:{username:any,email:any,password:any,passwordConf:any}) {
+
+    var errors:any;
+    var error_username = "";
+    var error_email = "";
+    var error_password = "";
+    var error_passwordConf = "";
     
     data.username = !Empty(data.username) ? data.username : '';
     data.email = !Empty(data.email) ? data.email : '';
@@ -12,40 +17,50 @@ module.exports = function validateRegisterInput(data:any) {
     data.passwordConf = !Empty(data.passwordConf) ? data.passwordConf : '';
 
     if(!Validator.isLength(data.username, { min: 2, max: 30 })) {
-        errors.username = 'User name must be between 2 to 30 chars';
+        error_username = 'User name must be between 2 to 30 chars';
     }
     
     if(Validator.isEmpty(data.username)) {
-        errors.username = 'User name field is required';
+        error_username = 'User name field is required';
     }
 
     if(!Validator.isEmail(data.email)) {
-        errors.email = 'Email is invalid';
+        error_email = 'Email is invalid';
     }
 
     if(Validator.isEmpty(data.email)) {
-        errors.email = 'Email is required';
+        error_email = 'Email is required';
     }
 
     if(!Validator.isLength(data.password, {min: 6, max: 30})) {
-        errors.password = 'Password must have 6 chars';
+        error_password = 'Password must have 6 chars';
     }
 
     if(Validator.isEmpty(data.password)) {
-        errors.password = 'Password is required';
+        error_password = 'Password is required';
     }
 
     if(!Validator.isLength(data.passwordConf, {min: 6, max: 30})) {
-        errors.passwordConf = 'Password must have 6 chars';
+        error_passwordConf = 'Password must have 6 chars';
     }
 
     if(!Validator.equals(data.password, data.passwordConf)) {
-        errors.passwordConf = 'Password and Confirm Password must match';
+        error_passwordConf = 'Password and Confirm Password must match';
     }
 
     if(Validator.isEmpty(data.passwordConf)) {
-        errors.passwordConf = 'Password is required';
+        error_passwordConf = 'Password is required';
     }
+
+    if(error_password != "" ||
+       error_passwordConf != "" ||
+       error_username != "" ||
+       error_email != "")
+       {
+           errors = {username:error_username,email:error_email,password:error_password,passwordConf:error_passwordConf}
+       }
+
+    
 
     return {
         errors,

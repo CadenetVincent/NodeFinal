@@ -2,7 +2,7 @@ var User = require("../model/auth.model");
 var school = require("../model/school.model");
 const request = require("supertest");
 const expect = require("chai").expect;
-const my_app = require("../server");
+var my_app = require("../server");
 const users_test = require("./auth_test");
 const schools_test = require("./schools_test");
 
@@ -63,7 +63,7 @@ describe("/User", () => {
         it("AUTH ROUTE / should connect user 3 (User) for access page ", async () => {
             const res = await agent
                 .post("/", async function(req:any, res:any) {
-                    req.session.user = new User(users_test[2][2]);
+                    req.session.user = users_test[2][2];
                 })
                 .send(users_test[2][2]);
 
@@ -71,17 +71,17 @@ describe("/User", () => {
         });
 
         it("AUTH ROUTE / should get menu page", async () => {
-            const res = await request(my_app).get("/menu");
+            const res = await agent.get("/menu");
             expect(res.status).to.equal(200);
         });
 
         it("AUTH ROUTE / should get register page", async () => {
-            const res = await request(my_app).get("/register");
+            const res = await agent.get("/register");
             expect(res.status).to.equal(200);
         });
 
         it("AUTH ROUTE / should get login page", async () => {
-            const res = await request(my_app).get("/");
+            const res = await agent.get("/");
             expect(res.status).to.equal(200);
         });
 
@@ -219,3 +219,5 @@ describe("/User", () => {
     });
 
 });
+
+module.exports = my_app;

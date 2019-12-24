@@ -6,8 +6,8 @@
   "scripts": {
     "startece": "node server.js",
     "start": "./node_modules/.bin/ts-node src/server.ts",
-    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./tests/test.js --timeout 5000 --exit",
-    "populate": "./node_modules/.bin/mocha ./tests/gopopulate.js --timeout 5000",
+    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./dist/tests/test.js --timeout 5000 --exit",
+    "populate": "./node_modules/.bin/mocha ./dist/tests/gopopulate.js --timeout 5000",
     "build": "./node_modules/.bin/tsc -p tsconfig.json"
   },
   "keywords": [
@@ -35,7 +35,9 @@
     "istanbul": "^1.0.0-alpha.2"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.7",
     "@types/express": "^4.17.2",
+    "@types/mocha": "^5.2.7",
     "@types/node": "^13.1.0",
     "@types/prompt-sync": "^4.1.0",
     "coveralls": "^3.0.9",

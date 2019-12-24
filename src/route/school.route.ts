@@ -22,7 +22,7 @@ schoolRoutes.get("/form", async function(req:any, res:any) {
         actual_user.status = "";
     }
 
-    var JSONCountry = require("../model/states.json");
+    var JSONCountry = require("../../public/json/states.json");
 
     JSONCountry = JSONCountry.map(function(state:any) {
         return state.name.toUpperCase();
@@ -457,7 +457,7 @@ schoolRoutes.get("/edit/:id", async function(req:any, res:any) {
         actual_user.status = "";
     }
 
-    var JSONCountry = require("../model/states.json");
+    var JSONCountry = require("../../public/json/states.json");
 
     JSONCountry = JSONCountry.map(function(state:any) {
         return state.name.toUpperCase();

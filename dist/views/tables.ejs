@@ -1,0 +1,85 @@
+<div>
+
+        <%- include('header') %>
+        
+        <%- include('navbar', {user : user}); %>
+        
+        <body>
+        
+        <div class="row">
+        
+        <div class="col-sm-12">
+
+        <br/>
+        
+        <div class="card">
+        
+        <h3 class="center"><%= title %></h3>
+        
+        </div>
+        
+        <br/>
+        
+        <table class="table table-striped table-dark table_used_school">
+            <tbody>
+              <tr>
+              <% if (fields.length) { 
+                    key.forEach(item => { %>
+
+                        <th><%= item %></th>
+
+                    <% }) %>
+
+              <th>update</th>
+              <th>delete</th>
+
+              <% } %>
+
+            </tr>
+
+            <% if (fields.length) { 
+                fields.forEach(item => { %>
+
+                    <tr>
+
+                    <% key.forEach(mykey => { %>
+
+                    <th><%= item[mykey] %></th>
+
+                    <% }) %>
+
+                    <% if(title == "School By User" || title == "All schools by admin"){ %>
+
+                    <th><a href="/school/edit/<%= item['_id']%>"  class="navbar_title"><p>update</p></a></th>
+                    <th><a href="/school/delete/<%= item['_id']%>"  class="navbar_title"><p>delete</p></a></th>
+
+                    <% } %>
+
+                    <% if(title == "Users By Admin"){ %>
+
+                      <th><a href="/user/edit/<%= item['_id']%>"  class="navbar_title"><p>update</p></a></th>
+                      <th><a href="/user/delete/<%= item['_id']%>"  class="navbar_title"><p>delete</p></a></th>
+  
+                    <% } %>
+
+
+
+                    </tr>
+
+                <% }) %>
+
+           <% } %>
+
+        
+            </tbody>
+          </table>
+        
+        </div>
+        
+        </div>
+        
+        </div>
+        
+        </body>
+        
+        <%- include('footer') %>

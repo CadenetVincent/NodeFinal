@@ -1,0 +1,74 @@
+<div>
+
+<%- include('header') %>
+
+<body>
+
+<%- include('navbar', {user : user}); %>
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-sm-6 offset-sm-3">
+
+<br/>
+
+<h3 class="center"> Main page </h3>
+
+<div class="alert alert-info" role="alert">
+<% if(nbr_school != 0){ %> <h4> You have change / add <span class="badge badge-info"><%= nbr_school %> </span> schools (School by User Id).</h4> <% }else{ %>
+<h4>The number of modifications will appear here.</h4>
+<% } %>
+<h4> For more rights put you administrator. </h4>
+<h4> Your password is crypted. </h4>
+</div>
+
+</div>
+
+<div class="col-sm-10 offset-sm-1">
+        
+<div class="alert alert-success" role="alert">
+<h4 class="center"><strong> User access </strong></h4>
+</div>
+
+<br/>
+
+<div class="row">
+
+<div class="col-sm-3 border"> <a class=" btn_school_grp"f href="/school/byuser"> Your school </a></div>
+<div class="col-sm-3 border"> <a class=" btn_school_grp"f href="/user/name/<%= user.username %>"> Your account</a></div>
+<div class="col-sm-3 border"> <a class=" btn_school_grp"f href="/school/form"> Add school </a></div>
+<div class="col-sm-3 border"> <a class=" btn_school_grp"f href="/school/chart/byuser"> Your school graphic </a></div>
+
+</div>
+
+<br/>
+<div class="alert alert-danger" role="alert">
+<h4 class="center"><strong>Admin access</strong></h4>
+</div>
+    
+<br/>
+
+<div class="row">
+
+<div class="col-sm-4 border"> <a class=" btn_school_grp"f href="/school/byadmin"> All schools </a></div>
+<div class="col-sm-4 border"> <a class=" btn_school_grp"f href="/user/byadmin">All accounts</a></div>
+<div class="col-sm-4 border"> <a class=" btn_school_grp"f href="/school/chart/all"> School graphic (All)</a></div>
+
+</div>
+
+</div>
+
+              
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+<%- include('footer') %>
+
+</div>

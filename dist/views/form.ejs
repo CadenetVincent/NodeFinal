@@ -1,0 +1,136 @@
+<div>
+
+<%- include('header') %>
+
+
+<body>
+
+<% if(title != "Register" && title !="Login"){ %>
+
+<%- include('navbar', {user : user}); %>
+
+<% } %>
+
+
+<div class="container">
+
+        <% if(title =="Login"){ %>
+            <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                            <div class="logout_btn">
+                                    <a href="/register" className="nav-link"> Register </a>
+                                </div>
+                    </ol>
+                  </nav>
+            <% } %>
+            
+            <% if(title =="Register"){ %>
+                <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                                <div class="logout_btn">
+                                        <a href="/" className="nav-link"> Login </a>
+                                    </div>
+                        </ol>
+                      </nav>
+            <% } %>
+
+<div class="row">
+
+<div class="col-sm-6 offset-sm-3">
+
+<br/>
+
+<div class="card">
+
+<h3 class="center"><%= title %></h3>
+
+</div>
+
+<br/>
+
+<div class="card">
+
+<div class="card_arrange">
+
+<form action="<%= action %>" method="post">
+  
+<% if (fields.length) { %>
+    <% fields.forEach(function(field){ %>
+
+        <% if(field.name == "status" || field.name == "mystate"){ %>
+        
+            <div class="form-group">
+            <label for="<%= field.name %>"><%= field.prettyname %></label>
+
+                    <select class="form-control" name="<%= field.name %>" <% if (field.property) { %> <%= field.property %> <% } %> >
+
+                        <% field.queries.forEach(function(querie){ %>
+                            <option <% if(querie == field.value){ %> <%= selected="selected" %> <% } %> value="<%= querie %>"><%= querie %></option>
+                        <% }) %>
+
+                    </select>
+
+            
+            </div>
+
+        
+        <% }else{ %>
+
+        <div class="form-group">
+        <label for="<%= field.type %>"><%= field.prettyname %></label>
+
+        <% if(field.type == "textarea"){ %>
+
+            <textarea 
+            rows="3"
+            class="form-control"
+            name="<%= field.name %>" 
+            id="<%= field.id %>" 
+            value="<%= field.value %>"
+            aria-describedby="emailHelp" 
+            placeholder="Enter <%= field.prettyname %>" 
+            <% if (field.property) { %> <%= field.property %> <% } %> 
+            ></textarea>
+     </div>
+     <p class="error_field"><%= field.error %></p>
+
+
+       <% }else{ %>
+        <input type="<%= field.type %>" 
+               class="form-control"
+               name="<%= field.name %>" 
+               id="<%= field.id %>" 
+               value="<%= field.value %>"
+               aria-describedby="emailHelp" 
+               placeholder="Enter <%= field.prettyname %>" 
+               <% if (field.property) { %> <%= field.property %> <% } %> 
+               >
+        </div>
+        <p class="error_field"><%= field.error %></p>
+
+        <% } %>
+    
+    <% } %>
+
+    <% }) %>
+<% } %>
+
+<button type="submit" class="btn btn-success"><%= title %></button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+<%- include('footer') %>

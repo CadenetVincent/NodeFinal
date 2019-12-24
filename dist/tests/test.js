@@ -35,13 +35,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var User = require("../model/auth.model.js");
-var school = require("../model/school.model.js");
+var User = require("../model/auth.model");
+var school = require("../model/school.model");
 var request = require("supertest");
 var expect = require("chai").expect;
 var my_app = require("../server");
-var users_test = require("./auth_test.js");
-var schools_test = require("./schools_test.js");
+var users_test = require("./auth_test");
+var schools_test = require("./schools_test");
 describe("/User", function () {
     before(function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -138,7 +138,7 @@ describe("/User", function () {
                             .post("/", function (req, res) {
                             return __awaiter(this, void 0, void 0, function () {
                                 return __generator(this, function (_a) {
-                                    req.session.user = new User(users_test[2][2]);
+                                    req.session.user = users_test[2][2];
                                     return [2 /*return*/];
                                 });
                             });
@@ -155,7 +155,7 @@ describe("/User", function () {
             var res;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, request(my_app).get("/menu")];
+                    case 0: return [4 /*yield*/, agent.get("/menu")];
                     case 1:
                         res = _a.sent();
                         expect(res.status).to.equal(200);
@@ -167,7 +167,7 @@ describe("/User", function () {
             var res;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, request(my_app).get("/register")];
+                    case 0: return [4 /*yield*/, agent.get("/register")];
                     case 1:
                         res = _a.sent();
                         expect(res.status).to.equal(200);
@@ -179,7 +179,7 @@ describe("/User", function () {
             var res;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, request(my_app).get("/")];
+                    case 0: return [4 /*yield*/, agent.get("/")];
                     case 1:
                         res = _a.sent();
                         expect(res.status).to.equal(200);
@@ -462,3 +462,4 @@ describe("/User", function () {
         }); });
     });
 });
+module.exports = my_app;

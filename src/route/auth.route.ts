@@ -187,7 +187,9 @@ router.get("/register", async function(req:any, res:any, next:any) {
 // GET THE MENU OF THE APPLICATION
 
 router.get("/menu", async function(req:any, res:any, next:any) {
-    var user_id:String;
+    var user_id;
+
+    console.log(req.session.user)
 
     try{
         user_id = req.session.user._id;
@@ -235,6 +237,8 @@ router.get("/menu", async function(req:any, res:any, next:any) {
 // ADD A USER IN THE DATABASE
 
 router.post("/", async function(req:any, res:any, next:any) {
+
+
     if (req.body.password !== req.body.passwordConf) {
         var err:any = new Error("Passwords do not match.");
         err.status = 400;
@@ -248,6 +252,7 @@ router.post("/", async function(req:any, res:any, next:any) {
         req.body.password &&
         req.body.passwordConf
     ) {
+
         const { errors, isValid } = validateRegisterInput(req.body);
 
         if (!isValid) {

@@ -72,7 +72,7 @@ schoolRoutes.get("/form", function (req, res) {
                     actual_user.status = "";
                     return [3 /*break*/, 4];
                 case 4:
-                    JSONCountry = require("../model/states.json");
+                    JSONCountry = require("../../public/json/states.json");
                     JSONCountry = JSONCountry.map(function (state) {
                         return state.name.toUpperCase();
                     });
@@ -544,7 +544,7 @@ schoolRoutes.get("/edit/:id", function (req, res) {
                     actual_user.status = "";
                     return [3 /*break*/, 4];
                 case 4:
-                    JSONCountry = require("../model/states.json");
+                    JSONCountry = require("../../public/json/states.json");
                     JSONCountry = JSONCountry.map(function (state) {
                         return state.name.toUpperCase();
                     });

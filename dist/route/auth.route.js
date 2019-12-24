@@ -49,8 +49,7 @@ var gravatar = require("gravatar");
 var bcrypt = require("bcryptjs");
 var express = __importStar(require("express"));
 var router = express.Router();
-var User = require("../model/auth.model.js");
-var school = require("../model/school.model.js");
+var User = require("../model/auth.model");
 router.get("/", function (req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
         var isuser;
@@ -250,6 +249,7 @@ router.get("/menu", function (req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
         var user_id;
         return __generator(this, function (_a) {
+            console.log(req.session.user);
             try {
                 user_id = req.session.user._id;
             }
@@ -342,12 +342,14 @@ router.post("/", function (req, res, next) {
                             avatar: avatar
                         });
                         bcrypt.hash(newUser.password, 10, function (err, hash) {
-                            if (err)
+                            if (err) {
                                 res.status(404).send("SALT error");
+                            }
                             else {
+                                console.log("win");
                                 newUser.password = hash;
                                 req.session.user = newUser;
-                                newUser.save().then(function (user) {
+                                return newUser.save().then(function (user) {
                                     res.status(200).render("acceuil", {
                                         success: true,
                                         user: newUser,
