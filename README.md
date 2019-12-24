@@ -85,15 +85,31 @@ Docker-compose :
 
     $ sudo docker-compose up --build
 
-NPM : 
+NPM test : 
 
     $ npm run test
 
-### Run the Node Application : 
+NPM populate the DATABASE :
 
-NPM : 
+    $ npm run populate 
 
-    $ npm run startece
+### Run & build the Node Application : 
+
+Npm start (Node / Nodejs): 
+
+    $ npm run start
+
+Npm start (ts-node / Typescript):
+
+    $ npm run start_ts
+
+Npm start (nodemon / Nodejs):
+
+    $ npm run start_js
+
+Dev start :
+
+    $ npm run dev 
 
 Build Typescript :
 
