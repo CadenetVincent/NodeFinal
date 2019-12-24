@@ -25,7 +25,7 @@ ECE Project : DevObs & Nodejs 2019 December
 
 ### What we use ? 
 
-- [x] `Language` : NodeJS, EJS, express, MongoDB (NoSQL), Linux.
+- [x] `Language` : NodeJS, EJS, express, Typescript, MongoDB (NoSQL), Linux.
 - [x] `Database` : MongoDB Atlas.
 - [x] `CI/CD` : Travis-CI, Coveralls. 
 - [x] `Unit Test` : Mocha/Chai, Nodejs. 
@@ -94,6 +94,10 @@ NPM :
 NPM : 
 
     $ npm run startece
+
+Build Typescript :
+
+    $ npm run build_app
 
 Heroku : 
 
