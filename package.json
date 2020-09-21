@@ -34,7 +34,7 @@
     "nodemon": "^2.0.1",
     "nyc": "^14.1.1",
     "supertest": "^4.0.2",
-    "validator": "^12.1.0",
+    "validator": "^13.1.17",
     "istanbul": "^1.0.0-alpha.2"
   },
   "devDependencies": {
